@@ -1,140 +1,1740 @@
 {
   "schemaVersion": 1,
-  "id": "item-f4fc4a29-e2b7-40f9-81ac-bcf7a8804b26",
-  "title": "Design foundations",
-  "description": "",
+  "id": "json-documentation-course-v1",
+  "title": "JSON",
+  "description": "Understand JSON syntax, nested data, parsing, serialization, precision and real application boundaries. Based on JSON.org and the MDN JSON documentation, with guided practice, module checks and a capstone.",
   "sections": [
     {
-      "id": "item-5b5cf308-f1b4-446f-a325-77bbd537a3e4",
+      "id": "m1",
       "type": "section",
       "title": "01 Start here",
       "children": [
         {
-          "id": "item-325650da-ad54-4132-acb2-7b686d8aa06d",
+          "id": "start",
           "type": "slides",
-          "title": "Welcome to the course",
+          "title": "Start here",
           "slides": [
             {
-              "id": "item-e2e0cc8e-142a-42ae-a087-3ce76f86e6b7",
-              "title": "A place to learn",
-              "body": "Learn at your own pace. Each section can contain more sections, slide decks, videos and quizzes. Your progress saves in this browser."
+              "id": "start-s1",
+              "title": "A small, focused course",
+              "body": "Learn JSON as a data format, then use it from JavaScript. You do not need to complete an API or HTTP course first. Basic JavaScript helps with the parsing and serialization modules. Study one lesson per session; the reference sections include advanced examples you can revisit."
             },
             {
-              "id": "item-a43b85fc-fdf6-4102-aabd-0994958e9aaf",
-              "title": "How to use this course",
-              "body": "Use the outline to choose a lesson. Review each slide and mark lessons complete. The final quiz unlocks when the lessons are complete."
+              "id": "start-s2",
+              "title": "Read, practice, explain",
+              "body": "Read each slide, predict an example’s result, run it in your browser console, then explain the result in your own words. Exercises are self-assessed. Module quizzes give feedback and skill reports. Reading all slides enables Mark lesson complete. Retakes are enabled; passing is 80%."
+            },
+            {
+              "id": "start-s3",
+              "title": "What the sources cover",
+              "body": "JSON.org: its introductory format description and complete grammar concepts. MDN: glossary, Working with JSON, test-your-skills tasks, the JSON namespace, all four static methods, three error references, and Request/Response body JSON methods. Third-party libraries linked by JSON.org, historical essays, all HTTP documentation and JSON Schema specifications are outside this course."
+            },
+            {
+              "id": "start-s4",
+              "title": "Your progress and exports",
+              "body": "Your progress, notes and settings stay in this browser. Reports are personal study feedback. Use Copy entire course below the final assessment to make one plain-text study article, including code, source links, quizzes and answers. All lessons are open by default; Settings can enable completion gates. There is no account server or verified certificate."
+            },
+            {
+              "id": "start-s5",
+              "title": "Source credits",
+              "body": "MDN contributors’ documentation is adapted under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). The course content uses the same license. Source files and the full upstream license are included in docs/mdn. JSON.org is linked and summarized; its language implementation directory is not copied. Documentation snapshot: 2026-10-07. New JavaScript features require runtime support checks."
             }
           ]
         }
       ]
     },
     {
-      "id": "item-af433aa7-caab-487a-9111-0ae08249918c",
+      "id": "m2",
       "type": "section",
-      "title": "02 Design in practice",
+      "title": "02 Format and grammar",
       "children": [
         {
-          "id": "item-cef92b37-b764-44fc-b4db-53cee5fa279f",
-          "type": "section",
-          "title": "Clarity and feedback",
-          "children": [
+          "id": "jsonorg-format",
+          "type": "slides",
+          "title": "JSON.org: format and containers",
+          "slides": [
             {
-              "id": "item-9245a1fd-c193-4cfe-a5e0-9219cb15d80b",
-              "type": "slides",
-              "title": "Make the next action clear",
-              "slides": [
-                {
-                  "id": "item-0fc06e65-3495-4a74-be81-a806e88bdcbe",
-                  "title": "Say what happens next",
-                  "body": "“Save changes” tells people more than “Continue”. A label should describe the action and its outcome."
-                },
-                {
-                  "id": "item-eadbde43-e0c3-42a1-850d-35b8784f669d",
-                  "title": "Make status visible",
-                  "body": "After someone saves, show a clear confirmation. If something fails, explain how they can recover."
-                }
-              ]
+              "id": "jsonorg-format-s1",
+              "title": "The format",
+              "body": "JSON is language-independent text for exchanging data. It represents records with objects and sequences with arrays. Source: [Introducing JSON](https://www.json.org/json-en.html)."
             },
             {
-              "id": "item-cd304605-0ae0-4415-bf00-95bb8996a364",
-              "type": "video",
-              "title": "A short motion study",
-              "url": "motion.mp4",
-              "captions": "",
-              "transcript": "A silent six-second abstract loop shows soft bands and shapes moving across a dark background. It demonstrates a decorative motion asset, rather than teaching through spoken narration.",
-              "description": "Silent abstract sample loop. Use the transcript below as its text alternative."
+              "id": "jsonorg-format-s2",
+              "title": "Objects",
+              "body": "An object uses braces. Names are double-quoted strings; a colon joins each name to its value. Commas separate members. Object member order should not carry business meaning.\n\n```json\n{\"course\":\"JSON\",\"published\":true,\"rating\":null}\n```"
             },
             {
-              "id": "item-75ccfd56-9bb7-4f4a-850f-77a97d8849ff",
-              "type": "quiz",
-              "title": "Check your understanding",
-              "questions": [
-                {
-                  "id": "item-16eec5fa-f530-420f-9952-e635eb6ca56d",
-                  "prompt": "Which button label describes its action most clearly?",
-                  "options": [
-                    "Continue",
-                    "Save changes",
-                    "Next"
-                  ],
-                  "answer": 1,
-                  "explanation": "Describe the action so people can predict its result."
-                }
-              ]
+              "id": "jsonorg-format-s3",
+              "title": "Arrays and nesting",
+              "body": "An array uses brackets and has meaningful element order. Containers may nest; an empty object or array is valid.\n\n```json\n{\"lessons\":[{\"title\":\"Syntax\",\"tags\":[\"data\",\"text\"]}]}\n```"
+            },
+            {
+              "id": "jsonorg-format-s4",
+              "title": "The six value categories",
+              "body": "A value may be an object, array, string, number, boolean or null. A complete JSON document may also be a single primitive.\n\n```json\n[\"JSON\",12,true,false,null,{},[]]\n```"
+            },
+            {
+              "id": "jsonorg-format-s5",
+              "title": "Practice",
+              "body": "Write a course record with title, published flag, nullable description and an ordered lessons array. Include two lessons, each with a duration number. Use no comments or trailing commas."
+            },
+            {
+              "id": "jsonorg-format-s6",
+              "title": "Worked self-check",
+              "body": "```json\n{\"title\":\"JSON\",\"published\":false,\"description\":null,\"lessons\":[{\"title\":\"Syntax\",\"minutes\":10},{\"title\":\"Parsing\",\"minutes\":15}]}\n```\n\nThe list preserves lesson order; names describe the meaning of values. Source diagrams and the language implementation directory remain available on JSON.org."
+            }
+          ]
+        },
+        {
+          "id": "jsonorg-tokens",
+          "type": "slides",
+          "title": "JSON.org: strings, numbers and whitespace",
+          "slides": [
+            {
+              "id": "jsonorg-tokens-s1",
+              "title": "Strings and escapes",
+              "body": "Strings use double quotes and Unicode characters. Backslash escapes include quote, backslash, slash, b, f, n, r, t and u followed by four hexadecimal digits. Raw control characters are forbidden."
+            },
+            {
+              "id": "jsonorg-tokens-s2",
+              "title": "Two levels of escaping",
+              "body": "This JSON contains an escaped newline and a Windows-style path:\n\n```json\n{\"message\":\"Line one\\nLine two\",\"path\":\"C:\\\\notes\"}\n```\n\nIn a JavaScript string literal, preserve those backslashes:\n\n```js\nconst text = '{\"message\":\"Line one\\\\nLine two\"}';\nconsole.log(JSON.parse(text).message);\n// Line one\n// Line two\n```"
+            },
+            {
+              "id": "jsonorg-tokens-s3",
+              "title": "Numbers",
+              "body": "Use decimal numbers with optional minus, fraction and exponent. Leading zeros, hexadecimal, NaN and Infinity are excluded.\n\nValid: `0`, `-4`, `0.25`, `2e3`, `-1.2E-3`.\nInvalid: `01`, `+4`, `.25`, `4.`, `0x10`, `2e`."
+            },
+            {
+              "id": "jsonorg-tokens-s4",
+              "title": "Whitespace",
+              "body": "Between tokens, JSON permits space, tab, line feed and carriage return. Whitespace inside a string is data; it cannot split a number or keyword. Source: [JSON.org grammar](https://www.json.org/json-en.html)."
+            },
+            {
+              "id": "jsonorg-tokens-s5",
+              "title": "Practice and check",
+              "body": "Repair `{name: 'Sam', amount: 01, done: True,}`.\n\n```json\n{\"name\":\"Sam\",\"amount\":1,\"done\":true}\n```\n\nExplain each change: quoted name, double-quoted string, decimal spelling, lowercase keyword, removed trailing comma. The JSON namespace reference later includes the complete formal grammar."
+            }
+          ]
+        },
+        {
+          "id": "mdn-glossary",
+          "type": "slides",
+          "title": "JSON",
+          "slides": [
+            {
+              "id": "mdn-glossary-s1",
+              "title": "Learning objective",
+              "body": "Explain why JSON is text and language independent.\n\nSource: [JSON](https://developer.mozilla.org/en-US/docs/Glossary/JSON). Adapted from MDN contributors under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Sections and code examples are retained; navigation widgets are removed. Run code examples in a browser console or local project, not inside this slide reader."
+            },
+            {
+              "id": "mdn-glossary-s2",
+              "title": "JSON",
+              "body": "_JavaScript Object Notation_ (**JSON**) is a data-interchange format. Although not a strict subset, JSON closely resembles a subset of [`JavaScript`](https://developer.mozilla.org/en-US/docs/Glossary/JavaScript) syntax. Though many programming languages support JSON, it is especially useful for JavaScript-based apps, including websites and browser extensions.\n\nJSON can represent numbers, booleans, strings, `null`, arrays (ordered sequences of values), and objects (string-value mappings) made up of these values (or of other arrays and objects). JSON does not natively represent more complex data types like functions, regular expressions, dates, and so on. (Date objects by default serialize to a string containing the date in ISO format, so the information isn't completely lost.) If you need JSON to represent additional data types, transform values as they are serialized or before they are deserialized."
+            },
+            {
+              "id": "mdn-glossary-s3",
+              "title": "See also",
+              "body": "- [JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)\n- [JSON](https://en.wikipedia.org/wiki/JSON) on Wikipedia"
+            },
+            {
+              "id": "mdn-glossary-s4",
+              "title": "Practice — try before continuing",
+              "body": "Compare a JSON document with the JavaScript value obtained by parsing it."
+            },
+            {
+              "id": "mdn-glossary-s5",
+              "title": "Worked self-check",
+              "body": "The document is a textual representation. Parsing creates a runtime value; the format is not limited to JavaScript."
+            }
+          ]
+        },
+        {
+          "id": "m2-check",
+          "type": "quiz",
+          "title": "Skill check: JSON syntax",
+          "skill": "JSON syntax",
+          "questions": [
+            {
+              "id": "m2-q1",
+              "prompt": "Which document is valid JSON?",
+              "options": [
+                "{'name':'Jo'}",
+                "{\"name\":\"Jo\"}",
+                "{name:\"Jo\"}"
+              ],
+              "answer": 1,
+              "explanation": "Names and string values require double quotes."
+            },
+            {
+              "id": "m2-q2",
+              "prompt": "Which can be a complete JSON document?",
+              "options": [
+                "Only an object",
+                "Only an array",
+                "A single false value"
+              ],
+              "answer": 2,
+              "explanation": "Any JSON value may be at the root."
+            },
+            {
+              "id": "m2-q3",
+              "prompt": "Which numeric spelling is legal?",
+              "options": [
+                "01",
+                "1e2",
+                "0x10"
+              ],
+              "answer": 1,
+              "explanation": "An exponent is allowed; leading zeros and hexadecimal are not."
+            },
+            {
+              "id": "m2-q4",
+              "prompt": "What carries order in a JSON data model?",
+              "options": [
+                "Array positions",
+                "Object member meaning inferred from position",
+                "Whitespace indentation"
+              ],
+              "answer": 0,
+              "explanation": "Arrays represent ordered sequences."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m3",
+      "type": "section",
+      "title": "03 Read JSON in JavaScript",
+      "children": [
+        {
+          "id": "mdn-guide",
+          "type": "slides",
+          "title": "Working with JSON: a browser example",
+          "slides": [
+            {
+              "id": "mdn-guide-s1",
+              "title": "Learning objective",
+              "body": "Load JSON, read nested values, and distinguish JSON text from parsed data.\n\nSource: [Working with JSON: a browser example](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON). Adapted from MDN contributors under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Sections and code examples are retained; navigation widgets are removed. Run code examples in a browser console or local project, not inside this slide reader."
+            },
+            {
+              "id": "mdn-guide-s2",
+              "title": "Working with JSON: a browser example",
+              "body": "JavaScript Object Notation (JSON) is a standard text-based format for representing structured data based on JavaScript object syntax. It is commonly used for transmitting data in web applications (e.g., sending some data from the server to the client, so it can be displayed on a web page, or vice versa). You'll come across it quite often, so in this article, we give you all you need to work with JSON using JavaScript, including parsing JSON so you can access data within it, and creating JSON.\n\n**Prerequisites:** basic HTML, CSS and JavaScript. **Outcomes:** recognize JSON, read nested values, retrieve JSON, parse and stringify."
+            },
+            {
+              "id": "mdn-guide-s3",
+              "title": "No, really, what is JSON?",
+              "body": "[`JSON`](https://developer.mozilla.org/en-US/docs/Glossary/JSON) is a text-based data format following JavaScript object syntax.\nIt represents structured data as a string, which is useful when you want to transmit data across a network.\nEven though it closely resembles JavaScript object literal syntax, it can be used independently from JavaScript. Many programming environments feature the ability to read (parse) and generate JSON.\nIn JavaScript, the methods for parsing and generating JSON are provided by the [`JSON`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) object.\n\n> **Note:**\n> Converting a string to a native object is called _deserialization_, while converting a native object to a string so it can be transmitted across the network is called _serialization_.\n\nA JSON string can be stored in its own file, which is basically just a text file with an extension of `.json`, and a [`MIME type`](https://developer.mozilla.org/en-US/docs/Glossary/MIME_type) of `application/json`."
+            },
+            {
+              "id": "mdn-guide-s4",
+              "title": "JSON structure",
+              "body": "As described above, JSON is a string whose format very much resembles JavaScript object literal format.\nThe following is a valid JSON string representing an object.\nNote that it is also a valid JavaScript object literal — just with some more [syntax restrictions](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON#json_syntax_restrictions).\n\n\n\n```js\n{\n  \"squadName\": \"Super hero squad\",\n  \"homeTown\": \"Metro City\",\n  \"formed\": 2016,\n  \"secretBase\": \"Super tower\",\n  \"active\": true,\n  \"members\": [\n    {\n      \"name\": \"Molecule Man\",\n      \"age\": 29,\n      \"secretIdentity\": \"Dan Jukes\",\n      \"powers\": [\"Radiation resistance\", \"Turning tiny\", \"Radiation blast\"]\n    },\n    {\n      \"name\": \"Madame Uppercut\",\n      \"age\": 39,\n      \"secretIdentity\": \"Jane Wilson\",\n      \"powers\": [\n        \"Million tonne punch\",\n        \"Damage resistance\",\n        \"Superhuman reflexes\"\n      ]\n    },\n    {\n      \"name\": \"Eternal Flame\",\n      \"age\": 1000000,\n      \"secretIdentity\": \"Unknown\",\n      \"powers\": [\n        \"Immortality\",\n        \"Heat Immunity\",\n        \"Inferno\",\n        \"Teleportation\",\n        \"Interdimensional travel\"\n      ]\n    }\n  ]\n}\n```\n\nIf you load this JSON in your JavaScript program as a string, you can parse it into a normal object and then access the data inside it using the same dot/bracket notation we looked at in the [JavaScript object basics](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Object_basics) article.\nFor example:\n\n```js\nsuperHeroes.homeTown;\nsuperHeroes.members[1].powers[2];\n```\n\n1. First, we have the variable name — `superHeroes`.\n2. Inside that, we want to access the `members` property, so we use `.members`.\n3. `members` contains an array populated by objects. We want to access the second object inside the array, so we use `[1]`.\n4. Inside this object, we want to access the `powers` property, so we use `.powers`.\n5. Inside the `powers` property is an array containing the selected hero's superpowers. We want the third one, so we use `[2]`.\n\nThe key takeaway is that there's really nothing special about working with JSON; after you've parsed it into a JavaScript object, you work with it just like you would with an object declared using the same object literal syntax.\n\n> **Note:**\n> We've made the JSON seen above available inside a variable in our [JSONTest.html](https://mdn.github.io/learning-area/javascript/oojs/json/JSONTest.html) example (see the [source code](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/JSONTest.html)).\n> Try loading this up and then accessing data inside the variable via your browser's JavaScript console."
+            },
+            {
+              "id": "mdn-guide-s5",
+              "title": "Arrays as JSON",
+              "body": "Above we mentioned that JSON text basically looks like a JavaScript object inside a string.\nWe can also convert arrays to/from JSON. The below example is perfectly valid JSON:\n\n```js\n[\n  {\n    \"name\": \"Molecule Man\",\n    \"age\": 29,\n    \"secretIdentity\": \"Dan Jukes\",\n    \"powers\": [\"Radiation resistance\", \"Turning tiny\", \"Radiation blast\"]\n  },\n  {\n    \"name\": \"Madame Uppercut\",\n    \"age\": 39,\n    \"secretIdentity\": \"Jane Wilson\",\n    \"powers\": [\n      \"Million tonne punch\",\n      \"Damage resistance\",\n      \"Superhuman reflexes\"\n    ]\n  }\n]\n```\n\nYou have to access array items (in its parsed version) by starting with an array index, for example `superHeroes[0].powers[0]`.\n\nThe JSON can also contain a single primitive. For example, `29`, `\"Dan Jukes\"`, or `true` are all valid JSON."
+            },
+            {
+              "id": "mdn-guide-s6",
+              "title": "JSON syntax restrictions",
+              "body": "As mentioned earlier, any JSON is a valid JavaScript literal (object, array, number, etc.). The converse is not true, though—not all JavaScript object literals are valid JSON.\n\n- JSON can only contain _serializable_ data types. This means:\n  - For primitives, JSON can contain string literals, number literals, `true`, `false`, and `null`. Notably, it cannot contain `undefined`, `NaN`, or `Infinity`.\n  - For non-primitives, JSON can contain object literals and arrays, but not functions or any other object types, such as `Date`, `Set`, and `Map`. The objects and arrays inside JSON need to further contain valid JSON data types.\n- Strings must be enclosed in double quotes, not single quotes.\n- Numbers must be written in decimal notation.\n- Each property of an object must be in the form of `\"key\": value`. Property names must be string literals enclosed in double quotes. Special JavaScript syntax, such as methods, is not allowed because methods are functions, and functions are not valid JSON data types.\n- Objects and arrays cannot contain [trailing commas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Trailing_commas).\n- Comments are not allowed in JSON.\n\nEven a single misplaced comma or colon can make a JSON file invalid and cause it to fail.\nYou should be careful to validate any data you are attempting to use (although computer-generated JSON is less likely to include errors, as long as the generator program is working correctly).\nYou can validate JSON using an application like [JSONLint](https://jsonlint.com/) or [JSON-validate](https://www.json-validate.com/)\n\n> **Note:**\n> Now you've read through this section, you might also want to supplement your learning with Scrimba's [JSON review](https://scrimba.com/frontend-path-c0j/~0lt?via=mdn)  interactive tutorial, which provides some useful guidance around basic JSON syntax and how to view JSON request data inside your browser's devtools."
+            },
+            {
+              "id": "mdn-guide-s7",
+              "title": "Working through a JSON example",
+              "body": "So, let's work through an example to show how we could make use of some JSON formatted data on a website."
+            },
+            {
+              "id": "mdn-guide-s8",
+              "title": "Getting started",
+              "body": "To begin with, make local copies of our [heroes.html](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/heroes.html) and [style.css](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/style.css) files.\nThe latter contains some simple CSS to style our page, while the former contains some very simple body HTML, plus a [`script`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script) element to contain the JavaScript code we will be writing in this exercise:\n\n```html\n<header>\n...\n</header>\n\n<section>\n...\n</section>\n\n<script>\n// JavaScript goes here\n</script>\n```\n\nWe have made our JSON data available on our GitHub, at <https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json>.\n\nWe are going to load the JSON into our script, and use some nifty DOM manipulation to display it, like this:\n\n[Diagram: Image of a document titled \"Super hero squad\" (in a fancy font) and subtitled \"Hometown: Metro City // Formed: 2016\". Three columns below the heading are titled \"Molecule Man\", \"Madame Uppercut\", and \"Eternal Flame\", respectively. Each column lists the hero's secret identity name, age, and superpowers.](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON/json-superheroes.png)"
+            },
+            {
+              "id": "mdn-guide-s9",
+              "title": "Top-level function",
+              "body": "The top-level function looks like this:\n\n```js\nasync function populate() {\n  const requestURL =\n    \"https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json\";\n  const request = new Request(requestURL);\n\n  const response = await fetch(request);\n  const superHeroes = await response.json();\n\n  populateHeader(superHeroes);\n  populateHeroes(superHeroes);\n}\n```\n\nTo obtain the JSON, we use an API called [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).\nThis API allows us to make network requests to retrieve resources from a server via JavaScript (e.g., images, text, JSON, even HTML snippets), meaning that we can update small sections of content without having to reload the entire page.\n\nIn our function, the first four lines use the Fetch API to fetch the JSON from the server:\n\n- we declare the `requestURL` variable to store the GitHub URL\n- we use the URL to initialize a new [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object.\n- we make the network request using the [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch) function, and this returns a [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) object\n- we retrieve the response as JSON using the [`json()`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json) function of the `Response` object.\n\n> **Note:**\n> The `fetch()` API is **asynchronous**. You can learn about asynchronous functions in detail in our [Asynchronous JavaScript module](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Async_JS), but for now, we'll just say that we need to add the keyword [`async`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) before the name of the function that uses the fetch API, and add the keyword [`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await) before the calls to any asynchronous functions.\n\nAfter all that, the `superHeroes` variable will contain the JavaScript object based on the JSON. We are then passing that object to two function calls — the first one fills the `<header>` with the correct data, while the second one creates an information card for each hero on the team, and inserts it into the `<section>`."
+            },
+            {
+              "id": "mdn-guide-s10",
+              "title": "Populating the header",
+              "body": "Now that we've retrieved the JSON data and converted it into a JavaScript object, let's make use of it by writing the two functions we referenced above. First of all, add the following function definition below the previous code:\n\n```js\nfunction populateHeader(obj) {\n  const header = document.querySelector(\"header\");\n  const myH1 = document.createElement(\"h1\");\n  myH1.textContent = obj.squadName;\n  header.appendChild(myH1);\n\n  const myPara = document.createElement(\"p\");\n  myPara.textContent = `Hometown: ${obj.homeTown} // Formed: ${obj.formed}`;\n  header.appendChild(myPara);\n}\n```\n\nHere we first create an [`h1`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) element with [`createElement()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement), set its [`textContent`](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) to equal the `squadName` property of the object, then append it to the header using [`appendChild()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild). We then do a very similar operation with a paragraph: create it, set its text content and append it to the header. The only difference is that its text is set to a [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) containing both the `homeTown` and `formed` properties of the object."
+            },
+            {
+              "id": "mdn-guide-s11",
+              "title": "Creating the hero information cards",
+              "body": "Next, add the following function at the bottom of the code, which creates and displays the superhero cards:\n\n```js\nfunction populateHeroes(obj) {\n  const section = document.querySelector(\"section\");\n  const heroes = obj.members;\n\n  for (const hero of heroes) {\n    const myArticle = document.createElement(\"article\");\n    const myH2 = document.createElement(\"h2\");\n    const myPara1 = document.createElement(\"p\");\n    const myPara2 = document.createElement(\"p\");\n    const myPara3 = document.createElement(\"p\");\n    const myList = document.createElement(\"ul\");\n\n    myH2.textContent = hero.name;\n    myPara1.textContent = `Secret identity: ${hero.secretIdentity}`;\n    myPara2.textContent = `Age: ${hero.age}`;\n    myPara3.textContent = \"Superpowers:\";\n\n    const superPowers = hero.powers;\n    for (const power of superPowers) {\n      const listItem = document.createElement(\"li\");\n      listItem.textContent = power;\n      myList.appendChild(listItem);\n    }\n\n    myArticle.appendChild(myH2);\n    myArticle.appendChild(myPara1);\n    myArticle.appendChild(myPara2);\n    myArticle.appendChild(myPara3);\n    myArticle.appendChild(myList);\n\n    section.appendChild(myArticle);\n  }\n}\n```\n\nTo start with, we store the `members` property of the JavaScript object in a new variable. This array contains multiple objects that contain the information for each hero.\n\nNext, we use a [`for...of` loop](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Loops#the_for...of_loop) to iterate through each object in the array. For each one, we:\n\n1. Create several new elements: an `<article>`, an `<h2>`, three `<p>`s, and a `<ul>`.\n2. Set the `<h2>` to contain the current hero's `name`.\n3. Fill the three paragraphs with their `secretIdentity`, `age`, and a line saying \"Superpowers:\" to introduce the information in the list.\n4. Store the `powers` property in another new constant called `superPowers` — this contains an array that lists the current hero's superpowers.\n5. Use another `for...of` loop to loop through the current hero's superpowers — for each one we create an `<li>` element, put the superpower inside it, then put the `listItem` inside the `<ul>` element (`myList`) using `appendChild()`.\n6. The very last thing we do is to append the `<h2>`, `<p>`s, and `<ul>` inside the `<article>` (`myArticle`), then append the `<article>` inside the `<section>`. The order in which things are appended is important, as this is the order they will be displayed inside the HTML.\n\n> **Note:**\n> If you are having trouble getting the example to work, try referring to our [heroes-finished.html](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/heroes-finished.html) source code (see it [running live](https://mdn.github.io/learning-area/javascript/oojs/json/heroes-finished.html) also.)\n\n> **Note:**\n> If you are having trouble following the dot/bracket notation we are using to access the JavaScript object, it can help to have the [superheroes.json](https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json) file open in another tab or your text editor, and refer to it as you look at our JavaScript.\n> You should also refer back to our [JavaScript object basics](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Object_basics) article for more information on dot and bracket notation."
+            },
+            {
+              "id": "mdn-guide-s12",
+              "title": "Calling the top-level function",
+              "body": "Finally, we need to call our top-level `populate()` function:\n\n```js\npopulate();\n```"
+            },
+            {
+              "id": "mdn-guide-s13",
+              "title": "Converting between objects and text",
+              "body": "The above example was simple in terms of accessing the JavaScript object, because we converted the network response directly into a JavaScript object using `response.json()`.\n\nBut sometimes we aren't so lucky — sometimes we receive a raw JSON string, and we need to convert it to an object ourselves. And when we want to send a JavaScript object across the network, we need to convert it to JSON (a string) before sending it. Luckily, these two problems are so common in web development that a built-in [JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) object is available in browsers, which contains the following two methods:\n\n- [`parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse): Accepts a JSON string as a parameter, and returns the corresponding JavaScript object.\n- [`stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify): Accepts an object as a parameter, and returns the equivalent JSON string.\n\nYou can see the first one in action in our [heroes-finished-json-parse.html](https://mdn.github.io/learning-area/javascript/oojs/json/heroes-finished-json-parse.html) example (see the [source code](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/heroes-finished-json-parse.html)) — this does exactly the same thing as the example we built up earlier, except that:\n\n- we retrieve the response as text rather than JSON, by calling the [`text()`](https://developer.mozilla.org/en-US/docs/Web/API/Response/text) method of the response\n- we then use `parse()` to convert the text to a JavaScript object.\n\nThe key snippet of code is here:\n\n```js\nasync function populate() {\n  const requestURL =\n    \"https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json\";\n  const request = new Request(requestURL);\n\n  const response = await fetch(request);\n  const superHeroesText = await response.text();\n\n  const superHeroes = JSON.parse(superHeroesText);\n  populateHeader(superHeroes);\n  populateHeroes(superHeroes);\n}\n```\n\nAs you might guess, `stringify()` works the opposite way. Try entering the following lines into your browser's JavaScript console one by one to see it in action:\n\n```js\nlet myObj = { name: \"Chris\", age: 38 };\nmyObj;\nlet myString = JSON.stringify(myObj);\nmyString;\n```\n\nHere we're creating a JavaScript object, checking what it contains, converting it to a JSON string using `stringify()` — saving the return value in a new variable — then checking it again."
+            },
+            {
+              "id": "mdn-guide-s14",
+              "title": "Summary",
+              "body": "In this lesson, we've introduced you to using JSON in your programs, including how to create and parse JSON, and how to access data locked inside it. In the next article, we'll give you some tests that you can use to check how well you've understood and retained all this information."
+            },
+            {
+              "id": "mdn-guide-s15",
+              "title": "See also",
+              "body": "- [JSON reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)\n- [Fetch API overview](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)\n- [Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)\n- [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods)"
+            },
+            {
+              "id": "mdn-guide-s16",
+              "title": "Practice — try before continuing",
+              "body": "Using the superhero example, obtain the second hero’s third power. Then replace the remote fetch with a JSON string and parse it locally."
+            },
+            {
+              "id": "mdn-guide-s17",
+              "title": "Worked self-check",
+              "body": "Read superHeroes.members[1].powers[2]. In this dataset that is Superhuman reflexes. response.json() already parses the body; JSON.parse is used only when you have text."
+            }
+          ]
+        },
+        {
+          "id": "mdn-json",
+          "type": "slides",
+          "title": "The JSON namespace and complete grammar",
+          "slides": [
+            {
+              "id": "mdn-json-s1",
+              "title": "Learning objective",
+              "body": "Navigate the namespace, formal grammar and numeric interoperability choices.\n\nSource: [The JSON namespace and complete grammar](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON). Adapted from MDN contributors under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Sections and code examples are retained; navigation widgets are removed. Run code examples in a browser console or local project, not inside this slide reader."
+            },
+            {
+              "id": "mdn-json-s2",
+              "title": "The JSON namespace and complete grammar",
+              "body": "The **`JSON`** namespace object contains static methods for parsing values from and converting values to [JavaScript Object Notation](https://json.org/) ([`JSON`](https://developer.mozilla.org/en-US/docs/Glossary/JSON))."
+            },
+            {
+              "id": "mdn-json-s3",
+              "title": "Description",
+              "body": "Unlike most global objects, `JSON` is not a constructor. You cannot use it with the [`new` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) or invoke the `JSON` object as a function. All properties and methods of `JSON` are static (just like the [`Math`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) object)."
+            },
+            {
+              "id": "mdn-json-s4",
+              "title": "JavaScript and JSON differences",
+              "body": "JSON is a syntax for serializing objects, arrays, numbers, strings, booleans, and [`null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null). It is based upon JavaScript syntax, but is distinct from JavaScript: most of JavaScript is _not_ JSON. For example:\n\n- Objects and Arrays\n  - : Property names must be double-quoted strings; [trailing commas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Trailing_commas) are forbidden.\n- Numbers\n  - : Leading zeros are prohibited. A decimal point must be followed by at least one digit. `NaN` and `Infinity` are unsupported.\n\nAny JSON text is a valid JavaScript expression, but only after the [JSON superset](https://github.com/tc39/proposal-json-superset) revision. Before the revision, U+2028 LINE SEPARATOR and U+2029 PARAGRAPH SEPARATOR are allowed in string literals and property keys in JSON; but the same use in JavaScript string literals is a [`SyntaxError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError).\n\nOther differences include allowing only double-quoted strings and no support for [`undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) or comments. For those who wish to use a more human-friendly configuration format based on JSON, there is [JSON5](https://json5.org/), used by the Babel compiler, and the more commonly used [YAML](https://en.wikipedia.org/wiki/YAML).\n\nThe same text may represent different values in JavaScript object literals vs. JSON as well. For more information, see [Object literal syntax vs. JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#object_literal_syntax_vs._json)."
+            },
+            {
+              "id": "mdn-json-s5",
+              "title": "Full JSON grammar",
+              "body": "Valid JSON syntax is formally defined by the following grammar, expressed in [ABNF](https://en.wikipedia.org/wiki/Augmented_Backus%E2%80%93Naur_form), and copied from [IETF JSON standard (RFC)](https://datatracker.ietf.org/doc/html/rfc8259):\n\n```plain\nJSON-text = ws value ws\nbegin-array     = ws %x5B ws  ; [ left square bracket\nbegin-object    = ws %x7B ws  ; { left curly bracket\nend-array       = ws %x5D ws  ; ] right square bracket\nend-object      = ws %x7D ws  ; } right curly bracket\nname-separator  = ws %x3A ws  ; : colon\nvalue-separator = ws %x2C ws  ; , comma\nws = *(\n     %x20 /              ; Space\n     %x09 /              ; Horizontal tab\n     %x0A /              ; Line feed or New line\n     %x0D                ; Carriage return\n     )\nvalue = false / null / true / object / array / number / string\nfalse = %x66.61.6c.73.65   ; false\nnull  = %x6e.75.6c.6c      ; null\ntrue  = %x74.72.75.65      ; true\nobject = begin-object [ member *( value-separator member ) ]\n         end-object\nmember = string name-separator value\narray = begin-array [ value *( value-separator value ) ] end-array\nnumber = [ minus ] int [ frac ] [ exp ]\ndecimal-point = %x2E       ; .\ndigit1-9 = %x31-39         ; 1-9\ne = %x65 / %x45            ; e E\nexp = e [ minus / plus ] 1*DIGIT\nfrac = decimal-point 1*DIGIT\nint = zero / ( digit1-9 *DIGIT )\nminus = %x2D               ; -\nplus = %x2B                ; +\nzero = %x30                ; 0\nstring = quotation-mark *char quotation-mark\nchar = unescaped /\n    escape (\n        %x22 /          ; \"    quotation mark  U+0022\n        %x5C /          ; \\    reverse solidus U+005C\n        %x2F /          ; /    solidus         U+002F\n        %x62 /          ; b    backspace       U+0008\n        %x66 /          ; f    form feed       U+000C\n        %x6E /          ; n    line feed       U+000A\n        %x72 /          ; r    carriage return U+000D\n        %x74 /          ; t    tab             U+0009\n        %x75 4HEXDIG )  ; uXXXX                U+XXXX\nescape = %x5C              ; \\\nquotation-mark = %x22      ; \"\nunescaped = %x20-21 / %x23-5B / %x5D-10FFFF\nHEXDIG = DIGIT / %x41-46 / %x61-66   ; 0-9, A-F, or a-f\n       ; HEXDIG equivalent to HEXDIG rule in [RFC5234]\nDIGIT = %x30-39            ; 0-9\n      ; DIGIT equivalent to DIGIT rule in [RFC5234]\n```\n\nInsignificant [`whitespace`](https://developer.mozilla.org/en-US/docs/Glossary/whitespace) may be present anywhere except within a `JSONNumber` (numbers must contain no whitespace) or `JSONString` (where it is interpreted as the corresponding character in the string, or would cause an error). The tab (U+0009), carriage return (U+000D), line feed (U+000A), and space (U+0020) characters are the only valid whitespace characters."
+            },
+            {
+              "id": "mdn-json-s6",
+              "title": "Static properties",
+              "body": "- `JSON[Symbol.toStringTag]`\n  - : The initial value of the [`[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property is the string `\"JSON\"`. This property is used in [`Object.prototype.toString()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype/toString)."
+            },
+            {
+              "id": "mdn-json-s7",
+              "title": "Static methods",
+              "body": "- [`JSON.isRawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/isRawJSON)\n  - : Tests whether a value is an object returned by [`JSON.rawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON).\n- [`JSON.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)\n  - : Parse a piece of string text as JSON, optionally transforming the produced value and its properties, and return the value.\n- [`JSON.rawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON)\n  - : Creates a \"raw JSON\" object containing a piece of JSON text. When serialized to JSON, the raw JSON object is treated as if it is already a piece of JSON. This text is required to be valid JSON.\n- [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)\n  - : Return a JSON string corresponding to the specified value, optionally including only certain properties or replacing property values in a user-defined manner."
+            },
+            {
+              "id": "mdn-json-s8",
+              "title": "Example JSON",
+              "body": "```js\n{\n  \"browsers\": {\n    \"firefox\": {\n      \"name\": \"Firefox\",\n      \"pref_url\": \"about:config\",\n      \"releases\": {\n        \"1\": {\n          \"release_date\": \"2004-11-09\",\n          \"status\": \"retired\",\n          \"engine\": \"Gecko\",\n          \"engine_version\": \"1.7\"\n        }\n      }\n    }\n  }\n}\n```\n\nYou can use the [`JSON.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method to convert the above JSON string into a JavaScript object:\n\n```js\nconst jsonText = `{\n  \"browsers\": {\n    \"firefox\": {\n      \"name\": \"Firefox\",\n      \"pref_url\": \"about:config\",\n      \"releases\": {\n        \"1\": {\n          \"release_date\": \"2004-11-09\",\n          \"status\": \"retired\",\n          \"engine\": \"Gecko\",\n          \"engine_version\": \"1.7\"\n        }\n      }\n    }\n  }\n}`;\n\nconsole.log(JSON.parse(jsonText));\n```"
+            },
+            {
+              "id": "mdn-json-s9",
+              "title": "Lossless number serialization",
+              "body": "JSON can contain number literals of arbitrary precision. However, it is not possible to represent all JSON numbers exactly in JavaScript, because JavaScript uses floating point representation which has a fixed precision. For example, `12345678901234567890 === 12345678901234567000` in JavaScript because they have the same floating point representation. This means there is no JavaScript number that corresponds precisely to the `12345678901234567890` JSON number.\n\nLet's assume you have an exact representation of some number (either via [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) or a custom library):\n\n```js\nconst data = {\n  // Using a BigInt here to store the exact value,\n  // but it can also be a custom high-precision number library,\n  // if the number might not be an integer.\n  gross_gdp: 12345678901234567890n,\n};\n```\n\nYou want to serialize it and then parse to the same exact number. There are several difficulties:\n\n- On the serialization side, in order to obtain a number in JSON, you have to pass a number to `JSON.stringify`, either via the `replacer` function or via the `toJSON` method. But, in either case, you have already lost precision during number conversion. If you pass a string to `JSON.stringify`, it will be serialized as a string, not a number.\n- On the parsing side, not all numbers can be represented exactly. For example, `JSON.parse(\"12345678901234567890\")` returns `12345678901234568000` because the number is rounded to the nearest representable number. Even if you use a `reviver` function, the number will already be rounded before the `reviver` function is called.\n\nThere are, in general, two ways to ensure that numbers are losslessly converted to JSON and parsed back: one involves a JSON number, another involves a JSON string. JSON is a _communication format_, so if you use JSON, you are likely communicating with another system (HTTP request, storing in database, etc.). The best solution to choose depends on the recipient system."
+            },
+            {
+              "id": "mdn-json-s10",
+              "title": "Using JSON strings",
+              "body": "If the recipient system does not have same JSON-handling capabilities as JavaScript, and does not support high precision numbers, you may want to serialize the number as a string, and then handle it as a string on the recipient side. This is also the only option in older JavaScript.\n\nTo specify how custom data types (including `BigInt`) should be serialized to JSON, either add a `toJSON` method to your data type, or use the `replacer` function of [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).\n\n```js\n// Using toJSON() method\nBigInt.prototype.toJSON = function () {\n  return this.toString();\n};\nconst str1 = JSON.stringify(data);\n\n// Using JSON.stringify() with replacer\nconst str2 = JSON.stringify(data, (key, value) => {\n  if (key === \"gross_gdp\") {\n    return value.toString();\n  }\n  return value;\n});\n```\n\nIn either case, the JSON text will look like `{\"gross_gdp\":\"12345678901234567890\"}`, where the value is a string, not a number. Then, on the recipient side, you can parse the JSON and handle the string."
+            },
+            {
+              "id": "mdn-json-s11",
+              "title": "Using JSON numbers",
+              "body": "If the recipient of this message natively supports high precision numbers (such as Python integers), passing numbers as JSON numbers is obviously better, because they can directly parse to the high precision type instead of parsing a string from JSON, and then parsing a number from the string. In JavaScript, you can serialize arbitrary data types to JSON numbers without producing a number value first (resulting in loss of precision) by using [`JSON.rawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON) to precisely specify what the JSON source text should be.\n\n```js\n// Using toJSON() method\nBigInt.prototype.toJSON = function () {\n  return JSON.rawJSON(this.toString());\n};\nconst str1 = JSON.stringify(data);\n\n// Using JSON.stringify() with replacer\nconst str2 = JSON.stringify(data, (key, value) => {\n  if (key === \"gross_gdp\") {\n    return JSON.rawJSON(value.toString());\n  }\n  return value;\n});\n```\n\nThe text passed to `JSON.rawJSON` is treated as if it is already a piece of JSON, so it won't be serialized again as a string. Therefore, the JSON text will look like `{\"gross_gdp\":12345678901234567890}`, where the value is a number. This JSON can then be parsed by the recipient without any extra processing, provided that the recipient system does not have the same precision limitations as JavaScript.\n\nWhen parsing JSON containing high-precision numbers in JavaScript, take extra care because when `JSON.parse()` invokes the `reviver` function, the value you receive is already parsed (and has lost precision). You can use the `context.source` parameter of the [`JSON.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) `reviver` function to re-parse the number yourself.\n\n```js\nconst parsedData = JSON.parse(str, (key, value, context) => {\n  if (key === \"gross_gdp\") {\n    // Or use the constructor of your custom high-precision number library\n    return BigInt(context.source);\n  }\n  return value;\n});\n// { gross_gdp: 12345678901234567890n }\n```"
+            },
+            {
+              "id": "mdn-json-s12",
+              "title": "Specifications",
+              "body": "Check the live [MDN specifications section](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON#specifications) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-json-s13",
+              "title": "Browser compatibility",
+              "body": "Check the live [MDN browser compatibility section](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON#browser_compatibility) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-json-s14",
+              "title": "See also",
+              "body": "- [JSON Diff](https://json-diff.com/)\n- [JSON Beautifier/editor](https://jsonbeautifier.org/)\n- [JSON Parser](https://jsonparser.org/)\n- [JSON Validator](https://tools.learningcontainer.com/json-validator/)"
+            },
+            {
+              "id": "mdn-json-s15",
+              "title": "Practice — try before continuing",
+              "body": "Identify every JSON static method. Explain why new JSON() is invalid and why a long integer can lose precision."
+            },
+            {
+              "id": "mdn-json-s16",
+              "title": "Worked self-check",
+              "body": "The namespace provides parse, stringify, rawJSON and isRawJSON. It is not a constructor. JavaScript Number cannot represent every syntactically valid JSON number exactly."
+            }
+          ]
+        },
+        {
+          "id": "m3-check",
+          "type": "quiz",
+          "title": "Skill check: Reading JSON",
+          "skill": "Reading JSON",
+          "questions": [
+            {
+              "id": "m3-q1",
+              "prompt": "After await response.json(), what do you usually hold?",
+              "options": [
+                "A JSON file path",
+                "A parsed JavaScript value",
+                "An automatically validated domain object"
+              ],
+              "answer": 1,
+              "explanation": "The body is decoded and parsed, but business validation is separate."
+            },
+            {
+              "id": "m3-q2",
+              "prompt": "How do you access the second lesson title in parsed catalog.lessons?",
+              "options": [
+                "catalog.lessons[1].title",
+                "catalog.lessons[2].title",
+                "JSON.title(catalog)"
+              ],
+              "answer": 0,
+              "explanation": "JavaScript array indexing starts at zero."
+            },
+            {
+              "id": "m3-q3",
+              "prompt": "What is JSON in JavaScript?",
+              "options": [
+                "A constructor for all records",
+                "A browser-only storage engine",
+                "A namespace with static methods"
+              ],
+              "answer": 2,
+              "explanation": "Use JSON.parse(text), not new JSON()."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m4",
+      "type": "section",
+      "title": "04 Parse and transform",
+      "children": [
+        {
+          "id": "mdn-parse",
+          "type": "slides",
+          "title": "JSON.parse()",
+          "slides": [
+            {
+              "id": "mdn-parse-s1",
+              "title": "Learning objective",
+              "body": "Parse any JSON root and trace reviver traversal, deletion and root replacement.\n\nSource: [JSON.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse). Adapted from MDN contributors under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Sections and code examples are retained; navigation widgets are removed. Run code examples in a browser console or local project, not inside this slide reader."
+            },
+            {
+              "id": "mdn-parse-s2",
+              "title": "JSON.parse()",
+              "body": "The **`JSON.parse()`** static method parses a JSON string, constructing the JavaScript value or object described by the string. An optional _reviver_ function can be provided to perform a transformation on the resulting object before it is returned.\n\n\n\n```js\nconst json = '{\"result\":true, \"count\":42}';\nconst obj = JSON.parse(json);\n\nconsole.log(obj.count);\n// Expected output: 42\n\nconsole.log(obj.result);\n// Expected output: true\n```"
+            },
+            {
+              "id": "mdn-parse-s3",
+              "title": "Syntax",
+              "body": "```js\nJSON.parse(text)\nJSON.parse(text, reviver)\n```"
+            },
+            {
+              "id": "mdn-parse-s4",
+              "title": "Parameters",
+              "body": "- `text`\n  - : The string to parse as JSON. See the [`JSON`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) object for a description of JSON syntax.\n- `reviver` (optional)\n  - : If a function, this prescribes how each value originally produced by parsing is transformed before being returned. Non-callable values are ignored. The function is called with the following arguments:\n    - `key`\n      - : The key associated with the value.\n    - `value`\n      - : The value produced by parsing.\n    - `context` (optional)\n      - : A context object that holds state relevant to the current expression being revived. It is a new object for each invocation of the reviver function. It is only passed when reviving primitive values, but not when `value` is an object or array. It contains the following property:\n        - `source`\n          - : The original JSON string representing this value."
+            },
+            {
+              "id": "mdn-parse-s5",
+              "title": "Return value",
+              "body": "The [`Object`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), string, number, boolean, or `null` value corresponding to the given JSON `text`."
+            },
+            {
+              "id": "mdn-parse-s6",
+              "title": "Exceptions",
+              "body": "- [`SyntaxError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError)\n  - : Thrown if the string to parse is not valid JSON."
+            },
+            {
+              "id": "mdn-parse-s7",
+              "title": "Description",
+              "body": "`JSON.parse()` parses a JSON string according to the [JSON grammar](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON#full_json_grammar), then evaluates the string as if it's a JavaScript expression. The only instance where a piece of JSON text represents a different value from the same JavaScript expression is when dealing with the `\"__proto__\"` key — see [Object literal syntax vs. JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#object_literal_syntax_vs._json)."
+            },
+            {
+              "id": "mdn-parse-s8",
+              "title": "The reviver parameter",
+              "body": "If a `reviver` is specified, the value computed by parsing is _transformed_ before being returned. Specifically, the computed value and all its properties (in a [depth-first](https://en.wikipedia.org/wiki/Depth-first_search) fashion, beginning with the most nested properties and proceeding to the original value itself) are individually run through the `reviver`.\n\nThe `reviver` is called with the object containing the property being processed as `this` (unless you define the `reviver` as an arrow function, in which case there's no separate `this` binding) and two arguments: `key` and `value`, representing the property name as a string (even for arrays) and the property value. For primitive values, an additional `context` parameter is passed, which contains the source text of this value. If the `reviver` function returns [`undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) (or returns no value — for example, if execution falls off the end of the function), the property is deleted from the object. Otherwise, the property is redefined to be the return value. If the `reviver` only transforms some values and not others, be certain to return all untransformed values as-is — otherwise, they will be deleted from the resulting object.\n\nSimilar to the `replacer` parameter of [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify), for arrays and objects, `reviver` will be last called on the root value with an empty string as the `key` and the root object as the `value`. For other valid JSON values, `reviver` works similarly and is called once with an empty string as the `key` and the value itself as the `value`.\n\nIf you return another value from `reviver`, that value will completely replace the originally parsed value. This even applies to the root value. For example:\n\n```js\nconst transformedObj = JSON.parse('[1,5,{\"s\":1}]', (key, value) =>\n  typeof value === \"object\" ? undefined : value,\n);\n\nconsole.log(transformedObj); // undefined\n```\n\nThere is no way to work around this generically. You cannot specially handle the case where `key` is an empty string, because JSON objects can also contain keys that are empty strings. You need to know very precisely what kind of transformation is needed for each key when implementing the reviver.\n\nNote that `reviver` is run after the value is parsed. So, for example, numbers in JSON text will have already been converted to JavaScript numbers, and may lose precision in the process. One way to transfer large numbers without loss of precision is to serialize them as strings, and revive them to [BigInts](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), or other appropriate arbitrary precision formats.\n\nYou can also use the `context.source` property to access the original JSON source text representing the value, as shown below:\n\n```js\nconst bigJSON = '{\"gross_gdp\": 12345678901234567890}';\nconst bigObj = JSON.parse(bigJSON, (key, value, context) => {\n  if (key === \"gross_gdp\") {\n    // Ignore the value because it has already lost precision\n    return BigInt(context.source);\n  }\n  return value;\n});\n```"
+            },
+            {
+              "id": "mdn-parse-s9",
+              "title": "Using JSON.parse()",
+              "body": "```js\nJSON.parse(\"{}\"); // {}\nJSON.parse(\"true\"); // true\nJSON.parse('\"foo\"'); // \"foo\"\nJSON.parse('[1, 5, \"false\"]'); // [1, 5, \"false\"]\nJSON.parse(\"null\"); // null\n```"
+            },
+            {
+              "id": "mdn-parse-s10",
+              "title": "Using the reviver parameter",
+              "body": "```js\nJSON.parse(\n  '{\"p\": 5}',\n  (key, value) =>\n    typeof value === \"number\"\n      ? value * 2 // return value * 2 for numbers\n      : value, // return everything else unchanged\n);\n// { p: 10 }\n\nJSON.parse('{\"1\": 1, \"2\": 2, \"3\": {\"4\": 4, \"5\": {\"6\": 6}}}', (key, value) => {\n  console.log(key);\n  return value;\n});\n// 1\n// 2\n// 4\n// 6\n// 5\n// 3\n// \"\"\n```"
+            },
+            {
+              "id": "mdn-parse-s11",
+              "title": "Using reviver when paired with the replacer of JSON.stringify()",
+              "body": "In order for a value to properly round-trip (that is, it gets deserialized to the same original object), the serialization process must preserve the type information. For example, you can use the `replacer` parameter of [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) for this purpose:\n\n```js\n// Maps are normally serialized as objects with no properties.\n// We can use the replacer to specify the entries to be serialized.\nconst map = new Map([\n  [1, \"one\"],\n  [2, \"two\"],\n  [3, \"three\"],\n]);\n\nconst jsonText = JSON.stringify(map, (key, value) =>\n  value instanceof Map ? Array.from(value.entries()) : value,\n);\n\nconsole.log(jsonText);\n// [[1,\"one\"],[2,\"two\"],[3,\"three\"]]\n\nconst map2 = JSON.parse(jsonText, (key, value) =>\n  Array.isArray(value) && value.every(Array.isArray) ? new Map(value) : value,\n);\n\nconsole.log(map2);\n// Map { 1 => \"one\", 2 => \"two\", 3 => \"three\" }\n```\n\nBecause JSON has no syntax space for annotating type metadata, in order to revive values that are not plain objects, you have to consider one of the following:\n\n- Serialize the entire object to a string and prefix it with a type tag.\n- \"Guess\" based on the structure of the data (for example, an array of two-member arrays)\n- If the shape of the payload is fixed, based on the property name (for example, all properties called `registry` hold `Map` objects)."
+            },
+            {
+              "id": "mdn-parse-s12",
+              "title": "Illegal JSON",
+              "body": "When `JSON.parse` receives a string that does not conform to the JSON grammar, it throws a `SyntaxError`.\n\nArrays and objects cannot have [trailing commas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Trailing_commas) in JSON:\n\n```js\nJSON.parse(\"[1, 2, 3, 4, ]\");\n// SyntaxError: Unexpected token ] in JSON at position 13\n\nJSON.parse('{\"foo\": 1, }');\n// SyntaxError: Unexpected token } in JSON at position 12\n```\n\nJSON strings must be delimited by double (not single) quotes:\n\n```js\nJSON.parse(\"{'foo': 1}\");\n// SyntaxError: Unexpected token ' in JSON at position 1\n\nJSON.parse(\"'string'\");\n// SyntaxError: Unexpected token ' in JSON at position 0\n```\n\nIf you are writing JSON inside a JavaScript string literal, you should either use single quotes to delimit the JavaScript string literal, or escape the double quotes that delimit the JSON string:\n\n```js\nJSON.parse('{\"foo\": 1}'); // OK\nJSON.parse(\"{\\\"foo\\\": 1}\"); // OK\n```"
+            },
+            {
+              "id": "mdn-parse-s13",
+              "title": "Specifications",
+              "body": "Check the live [MDN specifications section](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#specifications) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-parse-s14",
+              "title": "Browser compatibility",
+              "body": "Check the live [MDN browser compatibility section](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#browser_compatibility) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-parse-s15",
+              "title": "See also",
+              "body": "- [Polyfill of modern `JSON.parse` behavior (reviver's `context` parameter) in `core-js`](https://github.com/zloirock/core-js#jsonparse-source-text-access)\n- [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)"
+            },
+            {
+              "id": "mdn-parse-s16",
+              "title": "Practice — try before continuing",
+              "body": "Parse {\"minutes\":10,\"draft\":true}. Double minutes with a reviver, preserve every other value, then trace the final empty-string key call."
+            },
+            {
+              "id": "mdn-parse-s17",
+              "title": "Worked self-check",
+              "body": "Return value * 2 for key minutes and value otherwise. Children are visited before their parent. Returning undefined deletes a property or replaces the entire root with undefined."
+            }
+          ]
+        },
+        {
+          "id": "mdn-bad-parse",
+          "type": "slides",
+          "title": "SyntaxError: JSON.parse: bad parsing",
+          "slides": [
+            {
+              "id": "mdn-bad-parse-s1",
+              "title": "Learning objective",
+              "body": "Diagnose malformed strings, property names, commas and numbers.\n\nSource: [SyntaxError: JSON.parse: bad parsing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/JSON_bad_parse). Adapted from MDN contributors under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Sections and code examples are retained; navigation widgets are removed. Run code examples in a browser console or local project, not inside this slide reader."
+            },
+            {
+              "id": "mdn-bad-parse-s2",
+              "title": "SyntaxError: JSON.parse: bad parsing",
+              "body": "The JavaScript exceptions thrown by [`JSON.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) occur when string failed\nto be parsed as JSON."
+            },
+            {
+              "id": "mdn-bad-parse-s3",
+              "title": "Message",
+              "body": "```plain\nSyntaxError: JSON.parse: unterminated string literal\nSyntaxError: JSON.parse: bad control character in string literal\nSyntaxError: JSON.parse: bad character in string literal\nSyntaxError: JSON.parse: bad Unicode escape\nSyntaxError: JSON.parse: bad escape character\nSyntaxError: JSON.parse: unterminated string\nSyntaxError: JSON.parse: no number after minus sign\nSyntaxError: JSON.parse: unexpected non-digit\nSyntaxError: JSON.parse: missing digits after decimal point\nSyntaxError: JSON.parse: unterminated fractional number\nSyntaxError: JSON.parse: missing digits after exponent indicator\nSyntaxError: JSON.parse: missing digits after exponent sign\nSyntaxError: JSON.parse: exponent part is missing a number\nSyntaxError: JSON.parse: unexpected end of data\nSyntaxError: JSON.parse: unexpected keyword\nSyntaxError: JSON.parse: unexpected character\nSyntaxError: JSON.parse: end of data while reading object contents\nSyntaxError: JSON.parse: expected property name or '}'\nSyntaxError: JSON.parse: end of data when ',' or ']' was expected\nSyntaxError: JSON.parse: expected ',' or ']' after array element\nSyntaxError: JSON.parse: end of data when property name was expected\nSyntaxError: JSON.parse: expected double-quoted property name\nSyntaxError: JSON.parse: end of data after property name when ':' was expected\nSyntaxError: JSON.parse: expected ':' after property name in object\nSyntaxError: JSON.parse: end of data after property value in object\nSyntaxError: JSON.parse: expected ',' or '}' after property value in object\nSyntaxError: JSON.parse: expected ',' or '}' after property-value pair in object literal\nSyntaxError: JSON.parse: property names must be double-quoted strings\nSyntaxError: JSON.parse: expected property name or '}'\nSyntaxError: JSON.parse: unexpected character\nSyntaxError: JSON.parse: unexpected non-whitespace character after JSON data\n```"
+            },
+            {
+              "id": "mdn-bad-parse-s4",
+              "title": "Error type",
+              "body": "[`SyntaxError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError)"
+            },
+            {
+              "id": "mdn-bad-parse-s5",
+              "title": "What went wrong?",
+              "body": "[`JSON.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) parses a string as JSON. This string has to be valid JSON\nand will throw this error if incorrect syntax was encountered."
+            },
+            {
+              "id": "mdn-bad-parse-s6",
+              "title": "JSON.parse() does not allow trailing commas",
+              "body": "Both lines will throw a SyntaxError:\n\n```js\nJSON.parse(\"[1, 2, 3, 4,]\");\nJSON.parse('{\"foo\": 1,}');\n// SyntaxError JSON.parse: unexpected character\n// at line 1 column 14 of the JSON data\n```\n\nOmit the trailing commas to parse the JSON correctly:\n\n```js\nJSON.parse(\"[1, 2, 3, 4]\");\nJSON.parse('{\"foo\": 1}');\n```"
+            },
+            {
+              "id": "mdn-bad-parse-s7",
+              "title": "Property names must be double-quoted strings",
+              "body": "You cannot use single-quotes around properties, like 'foo'.\n\n```js\nJSON.parse(\"{'foo': 1}\");\n// SyntaxError: JSON.parse: expected property name or '}'\n// at line 1 column 2 of the JSON data\n```\n\nInstead write \"foo\":\n\n```js\nJSON.parse('{\"foo\": 1}');\n```"
+            },
+            {
+              "id": "mdn-bad-parse-s8",
+              "title": "Leading zeros and decimal points",
+              "body": "You cannot use leading zeros, like 01, and decimal points must be followed by at least\none digit.\n\n```js\nJSON.parse('{\"foo\": 01}');\n// SyntaxError: JSON.parse: expected ',' or '}' after property value\n// in object at line 1 column 2 of the JSON data\n\nJSON.parse('{\"foo\": 1.}');\n// SyntaxError: JSON.parse: unterminated fractional number\n// at line 1 column 2 of the JSON data\n```\n\nInstead write just 1 without a zero and use at least one digit after a decimal point:\n\n```js\nJSON.parse('{\"foo\": 1}');\nJSON.parse('{\"foo\": 1.0}');\n```"
+            },
+            {
+              "id": "mdn-bad-parse-s9",
+              "title": "See also",
+              "body": "- [`JSON`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)\n- [`JSON.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)\n- [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)"
+            },
+            {
+              "id": "mdn-bad-parse-s10",
+              "title": "Practice — try before continuing",
+              "body": "Repair {\"x\":01,} and test that {\"x\":\"01\"} is syntactically valid. Explain why their values have different types."
+            },
+            {
+              "id": "mdn-bad-parse-s11",
+              "title": "Worked self-check",
+              "body": "Use {\"x\":1} for a number, or {\"x\":\"01\"} for a string. JSON.parse throws SyntaxError for the original. Error message wording and positions vary by engine."
+            }
+          ]
+        },
+        {
+          "id": "data-boundaries",
+          "type": "slides",
+          "title": "Syntax is only the first check",
+          "slides": [
+            {
+              "id": "data-boundaries-s1",
+              "title": "Three questions",
+              "body": "1. Is the text legal JSON?\n2. Is the parsed value the expected shape and type?\n3. Does it satisfy the application’s rules?\n\n`{\"minutes\":\"ten\"}` is valid JSON but is unsuitable when minutes must be a finite, nonnegative number."
+            },
+            {
+              "id": "data-boundaries-s2",
+              "title": "Check values explicitly",
+              "body": "```js\nfunction isLesson(v) {\n  return v !== null && typeof v === \"object\" && !Array.isArray(v)\n    && typeof v.title === \"string\"\n    && typeof v.minutes === \"number\"\n    && Number.isFinite(v.minutes) && v.minutes >= 0;\n}\nconsole.log(isLesson({ title: \"Syntax\", minutes: 10 })); // true\nconsole.log(isLesson({ title: \"Syntax\", minutes: \"10\" })); // false\n```\n\nThis authored check validates two fields. It is not a complete JSON Schema validator."
+            },
+            {
+              "id": "data-boundaries-s3",
+              "title": "Do not execute data",
+              "body": "Use JSON.parse rather than eval. Display untrusted strings with textContent. JSON parsing does not make HTML safe or authorize a user. A parsed __proto__ property is data; merging attacker-controlled names into other objects needs separate care. See [MDN parsing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)."
+            },
+            {
+              "id": "data-boundaries-s4",
+              "title": "Practice and check",
+              "body": "Classify `null`, `{}`, `{\"title\":\"Syntax\",\"minutes\":-2}` and `{\"title\":\"Syntax\",\"minutes\":10}`. All four are valid JSON. Only the last passes isLesson. An application might add maximum duration, allowed fields and length constraints."
+            }
+          ]
+        },
+        {
+          "id": "m4-check",
+          "type": "quiz",
+          "title": "Skill check: Parsing and validation",
+          "skill": "Parsing and validation",
+          "questions": [
+            {
+              "id": "m4-q1",
+              "prompt": "What does JSON.parse(\"null\") return?",
+              "options": [
+                "null",
+                "The string null",
+                "An empty object"
+              ],
+              "answer": 0,
+              "explanation": "JSON root values can be primitives."
+            },
+            {
+              "id": "m4-q2",
+              "prompt": "What does returning undefined from a reviver usually do to a property?",
+              "options": [
+                "Keeps it unchanged",
+                "Deletes it",
+                "Makes its JSON spelling null"
+              ],
+              "answer": 1,
+              "explanation": "Always return unchanged values when you intend to preserve them."
+            },
+            {
+              "id": "m4-q3",
+              "prompt": "Which reviver visit occurs last?",
+              "options": [
+                "The first object member",
+                "The last leaf only",
+                "The root with an empty-string key"
+              ],
+              "answer": 2,
+              "explanation": "Reviver processing proceeds from descendants to the root."
+            },
+            {
+              "id": "m4-q4",
+              "prompt": "Does successful JSON.parse prove a payload has a required title?",
+              "options": [
+                "No; validate the parsed shape separately",
+                "Yes; parsing enforces application fields",
+                "Only if indentation is two spaces"
+              ],
+              "answer": 0,
+              "explanation": "Syntax validation is distinct from the application contract."
+            },
+            {
+              "id": "m4-q5",
+              "prompt": "What should be used to read untrusted JSON text?",
+              "options": [
+                "eval",
+                "JSON.parse",
+                "new Function"
+              ],
+              "answer": 1,
+              "explanation": "JSON is data; do not execute it as JavaScript."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m5",
+      "type": "section",
+      "title": "05 Serialize deliberately",
+      "children": [
+        {
+          "id": "mdn-stringify",
+          "type": "slides",
+          "title": "JSON.stringify()",
+          "slides": [
+            {
+              "id": "mdn-stringify-s1",
+              "title": "Learning objective",
+              "body": "Predict stringify output and use replacer, space and toJSON intentionally.\n\nSource: [JSON.stringify()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify). Adapted from MDN contributors under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Sections and code examples are retained; navigation widgets are removed. Run code examples in a browser console or local project, not inside this slide reader."
+            },
+            {
+              "id": "mdn-stringify-s2",
+              "title": "JSON.stringify()",
+              "body": "The **`JSON.stringify()`** static method converts a JavaScript value to a JSON string, optionally replacing values if a replacer function is specified or optionally including only the specified properties if a replacer array is specified.\n\n\n\n```js\nconsole.log(JSON.stringify({ x: 5, y: 6 }));\n// Expected output: '{\"x\":5,\"y\":6}'\n\nconsole.log(\n  JSON.stringify([new Number(3), new String(\"false\"), new Boolean(false)]),\n);\n// Expected output: '[3,\"false\",false]'\n\nconsole.log(JSON.stringify({ x: [10, undefined, function () {}, Symbol(\"\")] }));\n// Expected output: '{\"x\":[10,null,null,null]}'\n\nconsole.log(JSON.stringify(new Date(2006, 0, 2, 15, 4, 5)));\n// Expected output: '\"2006-01-02T15:04:05.000Z\"'\n```"
+            },
+            {
+              "id": "mdn-stringify-s3",
+              "title": "Syntax",
+              "body": "```js\nJSON.stringify(value)\nJSON.stringify(value, replacer)\nJSON.stringify(value, replacer, space)\n```"
+            },
+            {
+              "id": "mdn-stringify-s4",
+              "title": "Parameters",
+              "body": "- `value`\n  - : The value to convert to a JSON string.\n- `replacer` (optional)\n  - : A function that alters the behavior of the stringification process, or an array of strings and numbers that specifies properties of `value` to be included in the output. If `replacer` is an array, all elements in this array that are not strings or numbers (either primitives or wrapper objects), including [`Symbol`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol) values, are completely ignored. If `replacer` is anything other than a function or an array (e.g., [`null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null) or not provided), all string-keyed properties of the object are included in the resulting JSON string.\n- `space` (optional)\n  - : A string or number that's used to insert white space (including indentation, line break characters, etc.) into the output JSON string for readability purposes.\n\n    If this is a number, it indicates the number of space characters to be used as indentation, clamped to 10 (that is, any number greater than `10` is treated as if it were `10`). Values less than 1 indicate that no space should be used.\n\n    If this is a string, the string (or the first 10 characters of the string, if it's longer than that) is inserted before every nested object or array.\n\n    If `space` is anything other than a string or number (can be either a primitive or a wrapper object) — for example, is [`null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null) or not provided — no white space is used."
+            },
+            {
+              "id": "mdn-stringify-s5",
+              "title": "Return value",
+              "body": "A JSON string representing the given value, or undefined."
+            },
+            {
+              "id": "mdn-stringify-s6",
+              "title": "Exceptions",
+              "body": "- [`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError)\n  - : Thrown in one of the following cases:\n    - `value` contains a circular reference.\n    - A [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) value is encountered."
+            },
+            {
+              "id": "mdn-stringify-s7",
+              "title": "Description",
+              "body": "`JSON.stringify()` converts a value to the JSON notation that the value represents. Values are stringified in the following manner:\n\n- [`Boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean), [`Number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [`String`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), and [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) (obtainable via [`Object()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/Object)) objects are converted to the corresponding primitive values during stringification, in accordance with the traditional conversion semantics. [`Symbol`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol) objects (obtainable via [`Object()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/Object)) are treated as plain objects.\n- Attempting to serialize [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) values will throw. However, if the BigInt has a `toJSON()` method (through monkey patching: `BigInt.prototype.toJSON = ...`), that method can provide the serialization result. This constraint ensures that a proper serialization (and, very likely, its accompanying deserialization) behavior is always explicitly provided by the user.\n- [`undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined), [`Function`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function), and [`Symbol`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol) values are not valid JSON values. If any such values are encountered during conversion, they are either omitted (when found in an object) or changed to [`null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null) (when found in an array). `JSON.stringify()` can return `undefined` when passing in \"pure\" values like `JSON.stringify(() => {})` or `JSON.stringify(undefined)`.\n- The numbers [`Infinity`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity) and [`NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN), as well as the value [`null`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null), are all considered `null`. (But unlike the values in the previous point, they would never be omitted.)\n- Arrays are serialized as arrays (enclosed by square brackets). Only array indices between 0 and `length - 1` (inclusive) are serialized; other properties are ignored.\n- The special raw JSON object created with [`JSON.rawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON) is serialized as the raw JSON text it contains (by accessing its `rawJSON` property).\n- For other objects:\n  - All [`Symbol`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)-keyed properties will be completely ignored, even when using the [`replacer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#the_replacer_parameter) parameter.\n\n  - If the value has a `toJSON()` method, it's responsible for defining what data will be serialized. Instead of the object being serialized, the value returned by the `toJSON()` method when called will be serialized. `JSON.stringify()` calls `toJSON` with one parameter, the `key`, which has the same semantic as the `key` parameter of the [`replacer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#the_replacer_parameter) function:\n    - if this object is a property value, the property name\n    - if it is in an array, the index in the array, as a string\n    - if `JSON.stringify()` was directly called on this object, an empty string\n\n    All [`Temporal`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal) objects implement the `toJSON()` method, which returns a string (the same as calling `toString()`). Thus, they will be serialized as strings. Similarly, [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects implement `toJSON()`, which returns the same as [`toISOString()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString).\n\n  - Only [enumerable own properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Enumerability_and_ownership_of_properties) are visited. This means [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), [`Set`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set), etc. will become `\"{}\"`. You can use the [`replacer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#the_replacer_parameter) parameter to serialize them to something more useful.\n\n    Properties are visited using the same algorithm as [`Object.keys()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys), which has a well-defined order and is stable across implementations. For example, `JSON.stringify` on the same object will always produce the same string, and `JSON.parse(JSON.stringify(obj))` would produce an object with the same key ordering as the original (assuming the object is completely JSON-serializable)."
+            },
+            {
+              "id": "mdn-stringify-s8",
+              "title": "The replacer parameter",
+              "body": "The `replacer` parameter can be either a function or an array.\n\nAs an array, its elements indicate the names of the properties in the object that should be included in the resulting JSON string. Only string and number values are taken into account; symbol keys are ignored.\n\nAs a function, it takes two parameters: the `key` and the `value` being stringified. The object in which the key was found is provided as the `replacer`'s `this` context.\n\nThe `replacer` function is called for the initial object being stringified as well, in which case the `key` is an empty string (`\"\"`). It is then called for each property on the object or array being stringified. Array indices will be provided in its string form as `key`. The current property value will be replaced with the `replacer`'s return value for stringification. This means:\n\n- If you return a number, string, boolean, or `null`, that value is directly serialized and used as the property's value. (Returning a BigInt will throw as well.)\n- If you return a [`Function`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function), [`Symbol`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), or [`undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined), the property is not included in the output.\n- If you return any other object, the object is recursively stringified, calling the `replacer` function on each property.\n\n> **Note:**\n> When parsing JSON generated with `replacer` functions, you would likely want to use the [`reviver`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#using_the_reviver_parameter) parameter to perform the reverse operation.\n\nTypically, array elements' index would never shift (even when the element is an invalid value like a function, it will become `null` instead of omitted). Using the `replacer` function allows you to control the order of the array elements by returning a different array."
+            },
+            {
+              "id": "mdn-stringify-s9",
+              "title": "The space parameter",
+              "body": "The `space` parameter may be used to control spacing in the final string.\n\n- If it is a number, successive levels in the stringification will each be indented by this many space characters.\n- If it is a string, successive levels will be indented by this string.\n\nEach level of indentation will never be longer than 10. Number values of `space` are clamped to 10, and string values are truncated to 10 characters."
+            },
+            {
+              "id": "mdn-stringify-s10",
+              "title": "Using JSON.stringify",
+              "body": "```js\nJSON.stringify({}); // '{}'\nJSON.stringify(true); // 'true'\nJSON.stringify(\"foo\"); // '\"foo\"'\nJSON.stringify([1, \"false\", false]); // '[1,\"false\",false]'\nJSON.stringify([NaN, null, Infinity]); // '[null,null,null]'\nJSON.stringify({ x: 5 }); // '{\"x\":5}'\n\nJSON.stringify(new Date(1906, 0, 2, 15, 4, 5));\n// '\"1906-01-02T15:04:05.000Z\"'\n\nJSON.stringify({ x: 5, y: 6 });\n// '{\"x\":5,\"y\":6}'\nJSON.stringify([new Number(3), new String(\"false\"), new Boolean(false)]);\n// '[3,\"false\",false]'\n\n// String-keyed array elements are not enumerable and make no sense in JSON\nconst a = [\"foo\", \"bar\"];\na[\"baz\"] = \"quux\"; // a: [ 0: 'foo', 1: 'bar', baz: 'quux' ]\nJSON.stringify(a);\n// '[\"foo\",\"bar\"]'\n\nJSON.stringify({ x: [10, undefined, function () {}, Symbol(\"\")] });\n// '{\"x\":[10,null,null,null]}'\n\n// Standard data structures\nJSON.stringify([\n  new Set([1]),\n  new Map([[1, 2]]),\n  new WeakSet([{ a: 1 }]),\n  new WeakMap([[{ a: 1 }, 2]]),\n]);\n// '[{},{},{},{}]'\n\n// TypedArray\nJSON.stringify([new Int8Array([1]), new Int16Array([1]), new Int32Array([1])]);\n// '[{\"0\":1},{\"0\":1},{\"0\":1}]'\nJSON.stringify([\n  new Uint8Array([1]),\n  new Uint8ClampedArray([1]),\n  new Uint16Array([1]),\n  new Uint32Array([1]),\n]);\n// '[{\"0\":1},{\"0\":1},{\"0\":1},{\"0\":1}]'\nJSON.stringify([new Float32Array([1]), new Float64Array([1])]);\n// '[{\"0\":1},{\"0\":1}]'\n\n// toJSON()\nJSON.stringify({\n  x: 5,\n  y: 6,\n  toJSON() {\n    return this.x + this.y;\n  },\n});\n// '11'\n\n// Symbols:\nJSON.stringify({ x: undefined, y: Object, z: Symbol(\"\") });\n// '{}'\nJSON.stringify({ [Symbol(\"foo\")]: \"foo\" });\n// '{}'\nJSON.stringify({ [Symbol.for(\"foo\")]: \"foo\" }, [Symbol.for(\"foo\")]);\n// '{}'\nJSON.stringify({ [Symbol.for(\"foo\")]: \"foo\" }, (k, v) => {\n  if (typeof k === \"symbol\") {\n    return \"a symbol\";\n  }\n});\n// undefined\n\n// Non-enumerable properties:\nJSON.stringify(\n  Object.create(null, {\n    x: { value: \"x\", enumerable: false },\n    y: { value: \"y\", enumerable: true },\n  }),\n);\n// '{\"y\":\"y\"}'\n\n// BigInt values throw\nJSON.stringify({ x: 2n });\n// TypeError: BigInt value can't be serialized in JSON\n```"
+            },
+            {
+              "id": "mdn-stringify-s11",
+              "title": "Using a function as replacer",
+              "body": "```js\nfunction replacer(key, value) {\n  // Filtering out properties\n  if (typeof value === \"string\") {\n    return undefined;\n  }\n  return value;\n}\n\nconst foo = {\n  foundation: \"Mozilla\",\n  model: \"box\",\n  week: 45,\n  transport: \"car\",\n  month: 7,\n};\nJSON.stringify(foo, replacer);\n// '{\"week\":45,\"month\":7}'\n```\n\nIf you wish the `replacer` to distinguish an initial object from a key with an empty string property (since both would give the empty string as key and potentially an object as value), you will have to keep track of the iteration count (if it is beyond the first iteration, it is a genuine empty string key).\n\n```js\nfunction makeReplacer() {\n  let isInitial = true;\n\n  return (key, value) => {\n    if (isInitial) {\n      isInitial = false;\n      return value;\n    }\n    if (key === \"\") {\n      // Omit all properties with name \"\" (except the initial object)\n      return undefined;\n    }\n    return value;\n  };\n}\n\nconst replacer = makeReplacer();\nconsole.log(JSON.stringify({ \"\": 1, b: 2 }, replacer)); // \"{\"b\":2}\"\n```"
+            },
+            {
+              "id": "mdn-stringify-s12",
+              "title": "Using an array as replacer",
+              "body": "```js\nconst foo = {\n  foundation: \"Mozilla\",\n  model: \"box\",\n  week: 45,\n  transport: \"car\",\n  month: 7,\n};\n\nJSON.stringify(foo, [\"week\", \"month\"]);\n// '{\"week\":45,\"month\":7}', only keep \"week\" and \"month\" properties\n```"
+            },
+            {
+              "id": "mdn-stringify-s13",
+              "title": "Using the space parameter",
+              "body": "Indent the output with one space:\n\n```js\nconsole.log(JSON.stringify({ a: 2 }, null, \" \"));\n/*\n{\n \"a\": 2\n}\n*/\n```\n\nUsing a tab character mimics standard pretty-print appearance:\n\n\n\n```js\nconsole.log(JSON.stringify({ uno: 1, dos: 2 }, null, \"\\t\"));\n/*\n{\n\t\"uno\": 1,\n\t\"dos\": 2\n}\n*/\n```"
+            },
+            {
+              "id": "mdn-stringify-s14",
+              "title": "toJSON() behavior",
+              "body": "Defining `toJSON()` for an object allows overriding its serialization behavior.\n\n```js\nconst obj = {\n  data: \"data\",\n\n  toJSON(key) {\n    return key ? `Now I am a nested object under key '${key}'` : this;\n  },\n};\n\nJSON.stringify(obj);\n// '{\"data\":\"data\"}'\n\nJSON.stringify({ obj });\n// '{\"obj\":\"Now I am a nested object under key 'obj'\"}'\n\nJSON.stringify([obj]);\n// '[\"Now I am a nested object under key '0'\"]'\n```"
+            },
+            {
+              "id": "mdn-stringify-s15",
+              "title": "Issue with serializing circular references",
+              "body": "Since the [JSON format](https://www.json.org/) doesn't support object references (although an [IETF draft exists](https://datatracker.ietf.org/doc/html/draft-pbryan-zyp-json-ref-03)), a [`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) will be thrown if one attempts to encode an object with circular references.\n\n```js\nconst circularReference = {};\ncircularReference.myself = circularReference;\n\n// Serializing circular references throws \"TypeError: cyclic object value\"\nJSON.stringify(circularReference);\n```\n\nTo serialize circular references, you can use a library that supports them (e.g., [cycle.js](https://github.com/douglascrockford/JSON-js/blob/master/cycle.js) by Douglas Crockford) or implement a solution yourself, which will require finding and replacing (or removing) the cyclic references by serializable values.\n\nIf you are using `JSON.stringify()` to deep-copy an object, you may instead want to use [`structuredClone()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone), which supports circular references. JavaScript engine APIs for binary serialization, such as [`v8.serialize()`](https://nodejs.org/api/v8.html#v8serializevalue), also support circular references."
+            },
+            {
+              "id": "mdn-stringify-s16",
+              "title": "Using JSON.stringify() with localStorage",
+              "body": "In a case where you want to store an object created by your user and allow it to be restored even after the browser has been closed, the following example is a model for the applicability of `JSON.stringify()`:\n\n```js\n// Creating an example of JSON\nconst session = {\n  screens: [],\n  state: true,\n};\nsession.screens.push({ name: \"screenA\", width: 450, height: 250 });\nsession.screens.push({ name: \"screenB\", width: 650, height: 350 });\nsession.screens.push({ name: \"screenC\", width: 750, height: 120 });\nsession.screens.push({ name: \"screenD\", width: 250, height: 60 });\nsession.screens.push({ name: \"screenE\", width: 390, height: 120 });\nsession.screens.push({ name: \"screenF\", width: 1240, height: 650 });\n\n// Converting the JSON string with JSON.stringify()\n// then saving with localStorage in the name of session\nlocalStorage.setItem(\"session\", JSON.stringify(session));\n\n// Example of how to transform the String generated through\n// JSON.stringify() and saved in localStorage in JSON object again\nconst restoredSession = JSON.parse(localStorage.getItem(\"session\"));\n\n// Now restoredSession variable contains the object that was saved\n// in localStorage\nconsole.log(restoredSession);\n```"
+            },
+            {
+              "id": "mdn-stringify-s17",
+              "title": "Well-formed JSON.stringify()",
+              "body": "Engines implementing the [well-formed JSON.stringify specification](https://github.com/tc39/proposal-well-formed-stringify) will stringify lone surrogates (any code point from U+D800 to U+DFFF) using Unicode escape sequences rather than literally (outputting lone surrogates). Before this change, such strings could not be encoded in valid UTF-8 or UTF-16:\n\n```js\nJSON.stringify(\"\\uD800\"); // '\"�\"'\n```\n\nBut with this change `JSON.stringify()` represents lone surrogates using JSON escape sequences that _can_ be encoded in valid UTF-8 or UTF-16:\n\n```js\nJSON.stringify(\"\\uD800\"); // '\"\\\\ud800\"'\n```\n\nThis change should be backwards-compatible as long as you pass the result of `JSON.stringify()` to APIs such as `JSON.parse()` that will accept any valid JSON text, because they will treat Unicode escapes of lone surrogates as identical to the lone surrogates themselves. _Only_ if you are directly interpreting the result of `JSON.stringify()` do you need to carefully handle `JSON.stringify()`'s two possible encodings of these code points."
+            },
+            {
+              "id": "mdn-stringify-s18",
+              "title": "Specifications",
+              "body": "Check the live [MDN specifications section](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#specifications) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-stringify-s19",
+              "title": "Browser compatibility",
+              "body": "Check the live [MDN browser compatibility section](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#browser_compatibility) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-stringify-s20",
+              "title": "See also",
+              "body": "- [Polyfill of modern `JSON.stringify` behavior (symbol, well-formed unicode, raw JSON) in `core-js`](https://github.com/zloirock/core-js#ecmascript-json)\n- [`JSON.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)\n- [`JSON.rawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON)"
+            },
+            {
+              "id": "mdn-stringify-s21",
+              "title": "Practice — try before continuing",
+              "body": "Serialize {title:\"Syntax\", minutes:10, token:\"private\"} with an allowlist containing title and minutes. Indent by two spaces."
+            },
+            {
+              "id": "mdn-stringify-s22",
+              "title": "Worked self-check",
+              "body": "JSON.stringify(value, [\"title\", \"minutes\"], 2) excludes token from this example. Such a filter is not a substitute for permission checks and an explicit data contract."
+            }
+          ]
+        },
+        {
+          "id": "roundtrip-clinic",
+          "type": "slides",
+          "title": "Predict what survives a round trip",
+          "slides": [
+            {
+              "id": "roundtrip-clinic-s1",
+              "title": "Conversion is not universal cloning",
+              "body": "JSON encodes data, not JavaScript behavior or identity. Parsing a serialized class instance does not restore its prototype or methods. Dates serialize as strings. Maps and Sets need a chosen representation. structuredClone is a separate API with different supported types."
+            },
+            {
+              "id": "roundtrip-clinic-s2",
+              "title": "Undefined changes by position",
+              "body": "```js\nconsole.log(JSON.stringify({ a: undefined, b: null })); // {\"b\":null}\nconsole.log(JSON.stringify([undefined, null])); // [null,null]\nconsole.log(JSON.stringify(undefined)); // undefined (not JSON text)\n```\n\nDistinguish an omitted field, explicit null and false. They often mean different things in a data contract."
+            },
+            {
+              "id": "roundtrip-clinic-s3",
+              "title": "Hooks and explicit representations",
+              "body": "```js\nconst progress = {\n  completed: new Set([\"syntax\", \"parse\"]),\n  toJSON() { return { completed: [...this.completed] }; }\n};\nconsole.log(JSON.stringify(progress));\n// {\"completed\":[\"syntax\",\"parse\"]}\n```\n\nA toJSON method chooses data to serialize. It does not install a corresponding parser."
+            },
+            {
+              "id": "roundtrip-clinic-s4",
+              "title": "Practice and check",
+              "body": "Predict JSON.stringify({ x: NaN, y: Infinity, when: new Date(\"2026-01-01T00:00:00Z\") }).\n\nResult: `{\"x\":null,\"y\":null,\"when\":\"2026-01-01T00:00:00.000Z\"}`. On parse, when is still a string. Use a documented representation and deliberate reconstruction if a Date is required."
+            }
+          ]
+        },
+        {
+          "id": "mdn-cyclic",
+          "type": "slides",
+          "title": "TypeError: cyclic object value",
+          "slides": [
+            {
+              "id": "mdn-cyclic-s1",
+              "title": "Learning objective",
+              "body": "Distinguish cycles from repeated references and understand lossy replacements.\n\nSource: [TypeError: cyclic object value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cyclic_object_value). Adapted from MDN contributors under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Sections and code examples are retained; navigation widgets are removed. Run code examples in a browser console or local project, not inside this slide reader."
+            },
+            {
+              "id": "mdn-cyclic-s2",
+              "title": "TypeError: cyclic object value",
+              "body": "The JavaScript exception \"cyclic object value\" occurs when object references were found\nin [JSON](https://www.json.org/). [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) doesn't try\nto solve them and fails accordingly."
+            },
+            {
+              "id": "mdn-cyclic-s3",
+              "title": "Message",
+              "body": "```plain\nTypeError: Converting circular structure to JSON (V8-based)\nTypeError: cyclic object value (Firefox)\nTypeError: JSON.stringify cannot serialize cyclic structures. (Safari)\n```"
+            },
+            {
+              "id": "mdn-cyclic-s4",
+              "title": "Error type",
+              "body": "[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError)"
+            },
+            {
+              "id": "mdn-cyclic-s5",
+              "title": "What went wrong?",
+              "body": "The [JSON format](https://www.json.org/) per se doesn't support object\nreferences (although an [IETF draft exists](https://datatracker.ietf.org/doc/html/draft-pbryan-zyp-json-ref-03)),\nhence [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) doesn't try to solve them and fails accordingly."
+            },
+            {
+              "id": "mdn-cyclic-s6",
+              "title": "Circular references",
+              "body": "In a circular structure like the following:\n\n```js\nconst circularReference = { otherData: 123 };\ncircularReference.myself = circularReference;\n```\n\n[`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) will fail\n\n```js\nJSON.stringify(circularReference);\n// TypeError: cyclic object value\n```\n\nTo serialize circular references you can use a library that supports them (e.g., [cycle.js](https://github.com/douglascrockford/JSON-js/blob/master/cycle.js))\nor implement a solution by yourself, which will require finding and replacing (or\nremoving) the cyclic references by serializable values.\n\nThe snippet below illustrates how to find and filter (thus causing data loss) a cyclic\nreference by using the `replacer` parameter of\n[`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify):\n\n```js\nfunction getCircularReplacer() {\n  const ancestors = [];\n  return function (key, value) {\n    if (typeof value !== \"object\" || value === null) {\n      return value;\n    }\n    // `this` is the object that value is contained in,\n    // i.e., its direct parent.\n    while (ancestors.length > 0 && ancestors.at(-1) !== this) {\n      ancestors.pop();\n    }\n    if (ancestors.includes(value)) {\n      return \"[Circular]\";\n    }\n    ancestors.push(value);\n    return value;\n  };\n}\n\nJSON.stringify(circularReference, getCircularReplacer());\n// {\"otherData\":123,\"myself\":\"[Circular]\"}\n\nconst o = {};\nconst notCircularReference = [o, o];\nJSON.stringify(notCircularReference, getCircularReplacer());\n// [{},{}]\n```"
+            },
+            {
+              "id": "mdn-cyclic-s7",
+              "title": "See also",
+              "body": "- [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)\n- [cycle.js](https://github.com/douglascrockford/JSON-js/blob/master/cycle.js) on GitHub"
+            },
+            {
+              "id": "mdn-cyclic-s8",
+              "title": "Practice — try before continuing",
+              "body": "Compare const x={}; JSON.stringify([x,x]) with x.self=x; JSON.stringify(x)."
+            },
+            {
+              "id": "mdn-cyclic-s9",
+              "title": "Worked self-check",
+              "body": "Repeated references without a cycle serialize as separate empty objects. A self-reference throws TypeError. Replacing a cycle with a marker loses identity information."
+            }
+          ]
+        },
+        {
+          "id": "mdn-bigint",
+          "type": "slides",
+          "title": "TypeError: BigInt value can't be serialized in JSON",
+          "slides": [
+            {
+              "id": "mdn-bigint-s1",
+              "title": "Learning objective",
+              "body": "Handle BigInt serialization without accidental Number rounding.\n\nSource: [TypeError: BigInt value can't be serialized in JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/BigInt_not_serializable). Adapted from MDN contributors under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Sections and code examples are retained; navigation widgets are removed. Run code examples in a browser console or local project, not inside this slide reader."
+            },
+            {
+              "id": "mdn-bigint-s2",
+              "title": "TypeError: BigInt value can't be serialized in JSON",
+              "body": "The JavaScript exception \"BigInt value can't be serialized in JSON\" occurs when a [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) is encountered in [`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) with no custom serialization method provided."
+            },
+            {
+              "id": "mdn-bigint-s3",
+              "title": "Message",
+              "body": "```plain\nTypeError: Do not know how to serialize a BigInt (V8-based)\nTypeError: BigInt value can't be serialized in JSON (Firefox)\nTypeError: JSON.stringify cannot serialize BigInt. (Safari)\n```"
+            },
+            {
+              "id": "mdn-bigint-s4",
+              "title": "Error type",
+              "body": "[`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError)"
+            },
+            {
+              "id": "mdn-bigint-s5",
+              "title": "What went wrong?",
+              "body": "You are trying to serialize a BigInt value using `JSON.stringify`, which does not support BigInt values by default. Sometimes, JSON stringification happens implicitly in libraries, as part of data serialization. For example, sending data to the server, storing it in external storage, or transferring it between threads would all require serialization, which is often done using JSON.\n\nThere are several ways to handle this:\n\n- If you can alter the data source, avoid using BigInt values and cast it to a number first (which may lose precision for large numbers).\n- If you can alter the stringification process, pass a replacer function to `JSON.stringify` that converts BigInt values to strings or numbers.\n- You can also provide a `BigInt.prototype.toJSON` method globally that gets called whenever a BigInt value is stringified.\n\nFor more information on various tradeoffs, see [BigInt reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt#use_within_json)."
+            },
+            {
+              "id": "mdn-bigint-s6",
+              "title": "Providing a custom serialization method",
+              "body": "By default, BigInt values are not serializable in JSON:\n\n```js\nconst data = { a: 1n };\nJSON.stringify(data);\n// TypeError: BigInt value can't be serialized in JSON\n```\n\nAssuming you intend for the JSON to contain a number value, here are a few approaches that work:\n\n- Convert the BigInt to a number before stringifying:\n\n  ```js\n  const data = { a: 1n };\n  JSON.stringify({ ...data, a: Number(data.a) });\n  // '{\"a\":1}'\n  ```\n\n- Provide a replacer function that converts BigInt values to numbers or [raw JSON objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON):\n\n  ```js\n  const data = { a: 1n };\n  JSON.stringify(data, (key, value) =>\n    typeof value === \"bigint\" ? Number(value) : value,\n  );\n  // '{\"a\":1}'\n  ```\n\n  ```js\n  const data = { a: 1n };\n  JSON.stringify(data, (key, value) =>\n    typeof value === \"bigint\" ? JSON.rawJSON(value.toString()) : value,\n  );\n  // '{\"a\":1}'\n  ```\n\n- Provide a `BigInt.prototype.toJSON` method that gets called whenever a BigInt value is stringified:\n\n  ```js\n  BigInt.prototype.toJSON = function () {\n    return Number(this);\n  };\n  const data = { a: 1n };\n  JSON.stringify(data);\n  // '{\"a\":1}'\n  ```\n\n  ```js\n  BigInt.prototype.toJSON = function () {\n    return JSON.rawJSON(this.toString());\n  };\n  const data = { a: 1n };\n  JSON.stringify(data);\n  // '{\"a\":1}'\n  ```"
+            },
+            {
+              "id": "mdn-bigint-s7",
+              "title": "See also",
+              "body": "- [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)\n- [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)\n- [`JSON.rawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON)"
+            },
+            {
+              "id": "mdn-bigint-s8",
+              "title": "Practice — try before continuing",
+              "body": "Serialize {id:9007199254740993n} using a local replacer that returns a string for BigInt."
+            },
+            {
+              "id": "mdn-bigint-s9",
+              "title": "Worked self-check",
+              "body": "JSON.stringify(data, (key,value) => typeof value === \"bigint\" ? value.toString() : value). The receiver must know which string fields represent integers; avoid unnecessary global prototype changes."
+            }
+          ]
+        },
+        {
+          "id": "m5-check",
+          "type": "quiz",
+          "title": "Skill check: Serialization",
+          "skill": "Serialization",
+          "questions": [
+            {
+              "id": "m5-q1",
+              "prompt": "What is JSON.stringify([undefined])?",
+              "options": [
+                "undefined",
+                "[null]",
+                "[]"
+              ],
+              "answer": 1,
+              "explanation": "Unsupported array entries become null."
+            },
+            {
+              "id": "m5-q2",
+              "prompt": "What is JSON.stringify({x:undefined})?",
+              "options": [
+                "{}",
+                "{\"x\":null}",
+                "A SyntaxError"
+              ],
+              "answer": 0,
+              "explanation": "An unsupported object property is omitted."
+            },
+            {
+              "id": "m5-q3",
+              "prompt": "What happens to NaN during ordinary stringify?",
+              "options": [
+                "It becomes a JSON NaN keyword",
+                "It is preserved exactly",
+                "It becomes null"
+              ],
+              "answer": 2,
+              "explanation": "JSON has no NaN or Infinity literals."
+            },
+            {
+              "id": "m5-q4",
+              "prompt": "Which is a default stringify failure?",
+              "options": [
+                "A boolean root",
+                "A circular object",
+                "An empty array"
+              ],
+              "answer": 1,
+              "explanation": "JSON does not encode cyclic references."
+            },
+            {
+              "id": "m5-q5",
+              "prompt": "What does a replacer array provide?",
+              "options": [
+                "An allowlist of property names",
+                "A browser permissions policy",
+                "Automatic reconstruction of Date objects"
+              ],
+              "answer": 0,
+              "explanation": "It filters names during serialization."
+            },
+            {
+              "id": "m5-q6",
+              "prompt": "What is the parsed type of an ordinarily serialized Date?",
+              "options": [
+                "Date",
+                "Temporal",
+                "String"
+              ],
+              "answer": 2,
+              "explanation": "The serializer emits a string and parsing does not revive its type automatically."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m6",
+      "type": "section",
+      "title": "06 Precision and modern methods",
+      "children": [
+        {
+          "id": "precision-clinic",
+          "type": "slides",
+          "title": "Choose an exact-number contract",
+          "slides": [
+            {
+              "id": "precision-clinic-s1",
+              "title": "The format and the runtime differ",
+              "body": "A syntactically valid JSON number can exceed JavaScript Number precision or range. JSON has no BigInt suffix. Identifiers do not need arithmetic: represent long IDs as strings. Never convert a large ID to Number merely to satisfy a serializer."
+            },
+            {
+              "id": "precision-clinic-s2",
+              "title": "Portable string representation",
+              "body": "```js\nconst id = 9007199254740993n;\nconst text = JSON.stringify({ id: id.toString() });\nconsole.log(text); // {\"id\":\"9007199254740993\"}\nconsole.log(BigInt(JSON.parse(text).id) === id); // true\n```\n\nThe receiver must agree that this field is a decimal integer string."
+            },
+            {
+              "id": "precision-clinic-s3",
+              "title": "Source text access",
+              "body": "```js\nconst supportsSource = (() => {\n  let found = false;\n  JSON.parse(\"1\", (key, value, context) => {\n    found = context?.source === \"1\";\n    return value;\n  });\n  return found;\n})();\nif (supportsSource) {\n  const data = JSON.parse(\n    '{\"id\":9007199254740993}',\n    (key, value, context) => key === \"id\" ? BigInt(context.source) : value\n  );\n  console.log(data.id === 9007199254740993n); // true\n}\n```\n\nThe primitive source spelling can recover a value after Number conversion. Feature detection is required in older runtimes."
+            },
+            {
+              "id": "precision-clinic-s4",
+              "title": "Raw JSON does not fix the receiver",
+              "body": "```js\nif (typeof JSON.rawJSON === \"function\") {\n  const text = JSON.stringify({ id: JSON.rawJSON(\"9007199254740993\") });\n  console.log(text); // {\"id\":9007199254740993}\n}\n```\n\nThe emitted digits are exact. Ordinary JSON.parse can still round them. Choose the representation for the capabilities of both sender and receiver."
+            },
+            {
+              "id": "precision-clinic-s5",
+              "title": "Practice and check",
+              "body": "A mobile client and server exchange 20-digit IDs. Prefer a decimal string unless both sides explicitly support exact numeric decoding. Test the exact digits, not only whether the payload parses. For money, agree on units and rounding; JSON itself defines neither."
+            }
+          ]
+        },
+        {
+          "id": "mdn-rawjson",
+          "type": "slides",
+          "title": "JSON.rawJSON()",
+          "slides": [
+            {
+              "id": "mdn-rawjson-s1",
+              "title": "Learning objective",
+              "body": "Create primitive raw JSON and explain receiver precision requirements.\n\nSource: [JSON.rawJSON()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON). Adapted from MDN contributors under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Sections and code examples are retained; navigation widgets are removed. Run code examples in a browser console or local project, not inside this slide reader."
+            },
+            {
+              "id": "mdn-rawjson-s2",
+              "title": "JSON.rawJSON()",
+              "body": "The **`JSON.rawJSON()`** static method creates a \"raw JSON\" object containing a piece of JSON text. When serialized to JSON, the raw JSON object is treated as if it is already a piece of JSON. This text is required to be valid JSON."
+            },
+            {
+              "id": "mdn-rawjson-s3",
+              "title": "Syntax",
+              "body": "```js\nJSON.rawJSON(string)\n```"
+            },
+            {
+              "id": "mdn-rawjson-s4",
+              "title": "Parameters",
+              "body": "- `string`\n  - : The JSON text. Must be valid JSON **representing a primitive value**."
+            },
+            {
+              "id": "mdn-rawjson-s5",
+              "title": "Return value",
+              "body": "An object that can be used to create JSON text with the exact same content as the `string` provided, without quotes around the string itself. This object [has `null` prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects) and [is frozen](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) (so it never gets accidentally serialized as a regular object by any kind of primitive conversion), and the following property:\n\n- `rawJSON`\n  - : The original JSON `string` provided.\n\nFurthermore, it has a [private field](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_elements) that marks itself as a raw JSON object. This allows it to be identified by [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) and [`JSON.isRawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/isRawJSON)."
+            },
+            {
+              "id": "mdn-rawjson-s6",
+              "title": "Exceptions",
+              "body": "- [`SyntaxError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError)\n  - : Thrown if the `string` is not valid JSON, or if it represents an object or array."
+            },
+            {
+              "id": "mdn-rawjson-s7",
+              "title": "Description",
+              "body": "A raw JSON object can be seen as an immutable, atomic data structure like any kind of [primitive](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures#primitive_values). It is not a regular object and it contains no data other than the raw JSON text. It is used to \"pre-serialize\" data to formats that `JSON.stringify` itself cannot produce for various reasons. The most typical use case is the floating point number loss of precision problem. For example:\n\n```js\nJSON.stringify({ value: 12345678901234567890 });\n// {\"value\":12345678901234567000}\n```\n\nThe value is not exactly equivalent to the original number any more! This is because JavaScript uses floating point representation for all numbers, so it cannot represent all integers exactly. The number literal `12345678901234567890` itself is already rounded to the nearest representable number when it is parsed by JavaScript.\n\nWithout `JSON.rawJSON`, there is no way to tell `JSON.stringify` to produce the number literal `12345678901234567890`, because there is simply no corresponding JavaScript number value. With raw JSON, you can directly tell `JSON.stringify()` what a particular value should be stringified as:\n\n```js\nconst rawJSON = JSON.rawJSON(\"12345678901234567890\");\nJSON.stringify({ value: rawJSON });\n// {\"value\":12345678901234567890}\n```\n\nFor a more complete example of this, see [Lossless number serialization](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON#using_json_numbers).\n\nNote that although we passed a string to `JSON.rawJSON()`, it still becomes a number in the final JSON. This is because the string represents the verbatim JSON text. If you want to serialize a string, you should use `JSON.rawJSON()` with a quotes-enclosed string value:\n\n```js\nconst rawJSON = JSON.rawJSON('\"Hello world\"');\nJSON.stringify({ value: rawJSON });\n// {\"value\":\"Hello world\"}\n```\n\n`JSON.rawJSON` allows you to insert arbitrary JSON text, but does not allow you to create invalid JSON. Anything that was not permitted by the JSON syntax is not permitted by `JSON.rawJSON()` either:\n\n```js\nconst rawJSON = JSON.rawJSON('\"Hello\\nworld\"'); // Syntax error, because line breaks are not allowed in JSON strings\n```\n\nFurthermore, you cannot use `JSON.rawJSON()` to create JSON objects or arrays."
+            },
+            {
+              "id": "mdn-rawjson-s8",
+              "title": "Using JSON.rawJSON() to create JSON expressions of different types",
+              "body": "```js\nconst numJSON = JSON.rawJSON(\"123\");\nconst strJSON = JSON.rawJSON('\"Hello world\"');\nconst boolJSON = JSON.rawJSON(\"true\");\nconst nullJSON = JSON.rawJSON(\"null\");\n\nconsole.log(\n  JSON.stringify({\n    age: numJSON,\n    message: strJSON,\n    isActive: boolJSON,\n    nothing: nullJSON,\n  }),\n);\n\n// {\"age\":123,\"message\":\"Hello world\",\"isActive\":true,\"nothing\":null}\n```\n\nHowever, you cannot use `JSON.rawJSON()` to create JSON objects or arrays:\n\n```js\nconst arrJSON = JSON.rawJSON(\"[1, 2, 3]\");\nconst objJSON = JSON.rawJSON('{\"a\": 1, \"b\": 2}');\n// SyntaxError\n```"
+            },
+            {
+              "id": "mdn-rawjson-s9",
+              "title": "Using JSON.rawJSON() to create escaped string literals",
+              "body": "Apart from numbers, there is only one other type that does not have a one-to-one correspondence between JavaScript values and JSON text: strings. When strings are serialized to JSON, all code points, other than those that are not legal inside JSON string literals (such as line breaks), are printed literally:\n\n```js\nconsole.log(JSON.stringify({ value: \"\\ud83d\\ude04\" })); // {\"value\":\"😄\"}\n```\n\nThis may not be desirable, because the receiver of this string may handle Unicode differently. To improve interoperability, you can explicitly specify the string to be serialized with escape sequences:\n\n```js\nconst rawJSON = JSON.rawJSON('\"\\\\ud83d\\\\ude04\"');\nconst objStr = JSON.stringify({ value: rawJSON });\nconsole.log(objStr); // {\"value\":\"\\ud83d\\ude04\"}\nconsole.log(JSON.parse(objStr).value); // 😄\n```\n\nNote that the double backslashes in the `rawJSON` actually represents a single slash character."
+            },
+            {
+              "id": "mdn-rawjson-s10",
+              "title": "Specifications",
+              "body": "Check the live [MDN specifications section](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON#specifications) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-rawjson-s11",
+              "title": "Browser compatibility",
+              "body": "Check the live [MDN browser compatibility section](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON#browser_compatibility) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-rawjson-s12",
+              "title": "See also",
+              "body": "- [Polyfill of `JSON.rawJSON` in `core-js`](https://github.com/zloirock/core-js#jsonparse-source-text-access)\n- [`JSON`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)\n- [`JSON.isRawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/isRawJSON)\n- [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)"
+            },
+            {
+              "id": "mdn-rawjson-s13",
+              "title": "Practice — try before continuing",
+              "body": "Feature-detect rawJSON, serialize the exact digits 9007199254740993, then explain why rawJSON(\"[]\") fails."
+            },
+            {
+              "id": "mdn-rawjson-s14",
+              "title": "Worked self-check",
+              "body": "A raw JSON wrapper preserves numeric source text during stringify. Objects and arrays cannot be used as rawJSON inputs; it throws SyntaxError. Ordinary numeric parsing may still lose precision."
+            }
+          ]
+        },
+        {
+          "id": "mdn-israwjson",
+          "type": "slides",
+          "title": "JSON.isRawJSON()",
+          "slides": [
+            {
+              "id": "mdn-israwjson-s1",
+              "title": "Learning objective",
+              "body": "Recognize genuine raw JSON wrappers without confusing shape with identity.\n\nSource: [JSON.isRawJSON()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/isRawJSON). Adapted from MDN contributors under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Sections and code examples are retained; navigation widgets are removed. Run code examples in a browser console or local project, not inside this slide reader."
+            },
+            {
+              "id": "mdn-israwjson-s2",
+              "title": "JSON.isRawJSON()",
+              "body": "The **`JSON.isRawJSON()`** static method tests whether a value is an object returned by [`JSON.rawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON)."
+            },
+            {
+              "id": "mdn-israwjson-s3",
+              "title": "Syntax",
+              "body": "```js\nJSON.isRawJSON(value)\n```"
+            },
+            {
+              "id": "mdn-israwjson-s4",
+              "title": "Parameters",
+              "body": "- `value`\n  - : The value to test."
+            },
+            {
+              "id": "mdn-israwjson-s5",
+              "title": "Return value",
+              "body": "`true` if `value` is created by [`JSON.rawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON); otherwise, `false`."
+            },
+            {
+              "id": "mdn-israwjson-s6",
+              "title": "Description",
+              "body": "\"Raw JSON\" objects, when serialized to JSON, are treated as if they are already a piece of JSON. Furthermore, because of the way [`JSON.rawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON) works, the raw JSON is guaranteed to be syntactically valid JSON. For more information on the shape and behavior of raw JSON objects, see [`JSON.rawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON). This method exists to allow other serialization libraries to implement similar behavior to `JSON.stringify()` for raw JSON objects."
+            },
+            {
+              "id": "mdn-israwjson-s7",
+              "title": "Using JSON.isRawJSON()",
+              "body": "The following example demonstrates how to use `JSON.isRawJSON()` to test whether an object was returned by `JSON.rawJSON()`. It implements a custom serializer that serializes data to a YAML-like format.\n\n```js\nfunction mySerializer(value, indent = \"\") {\n  if (typeof value !== \"object\" || value === null) {\n    return JSON.stringify(value);\n  }\n  if (JSON.isRawJSON(value)) {\n    return value.rawJSON;\n  }\n  const subIndent = `${indent}  `;\n  if (Array.isArray(value)) {\n    return `- ${value.map((v) => mySerializer(v, subIndent)).join(`\\n${indent}- `)}`;\n  }\n  return Object.entries(value)\n    .map(([key, value]) => {\n      const subValue = mySerializer(value, subIndent);\n      if (subValue.includes(\"\\n\")) {\n        return `${key}:\\n${subIndent}${subValue}`;\n      }\n      return `${key}: ${subValue}`;\n    })\n    .join(`\\n${indent}`);\n}\n\nconsole.log(\n  mySerializer({\n    name: \"Josh\",\n    userId: JSON.rawJSON(\"12345678901234567890\"),\n    friends: [\n      { name: \"Alice\", userId: JSON.rawJSON(\"9876543210987654321\") },\n      { name: \"Bob\", userId: JSON.rawJSON(\"56789012345678901234\") },\n    ],\n  }),\n);\n\n// name: \"Josh\"\n// userId: 12345678901234567890\n// friends:\n//   - name: \"Alice\"\n//     userId: 9876543210987654321\n//   - name: \"Bob\"\n//     userId: 56789012345678901234\n```\n\nIf in the above example, the `userId` values were not created by `JSON.rawJSON()`, but passed as numbers directly, then we will get loss of precision upfront because of JS floating point precision limitations.\n\n```js\nconsole.log(\n  mySerializer({\n    name: \"Josh\",\n    userId: 12345678901234567890,\n    friends: [\n      { name: \"Alice\", userId: 9876543210987654321 },\n      { name: \"Bob\", userId: 56789012345678901234 },\n    ],\n  }),\n);\n\n// name: \"Josh\"\n// userId: 12345678901234567000\n// friends:\n//   - name: \"Alice\"\n//     userId: 9876543210987655000\n//   - name: \"Bob\"\n//     userId: 56789012345678900000\n```"
+            },
+            {
+              "id": "mdn-israwjson-s8",
+              "title": "Specifications",
+              "body": "Check the live [MDN specifications section](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/isRawJSON#specifications) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-israwjson-s9",
+              "title": "Browser compatibility",
+              "body": "Check the live [MDN browser compatibility section](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/isRawJSON#browser_compatibility) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-israwjson-s10",
+              "title": "See also",
+              "body": "- [Polyfill of `JSON.isRawJSON` in `core-js`](https://github.com/zloirock/core-js#jsonparse-source-text-access)\n- [`JSON`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)\n- [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)\n- [`JSON.rawJSON()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON)"
+            },
+            {
+              "id": "mdn-israwjson-s11",
+              "title": "Practice — try before continuing",
+              "body": "Feature-detect both rawJSON and isRawJSON. Compare a genuine wrapper with {rawJSON:\"1\"}."
+            },
+            {
+              "id": "mdn-israwjson-s12",
+              "title": "Worked self-check",
+              "body": "isRawJSON returns true only for a genuine wrapper produced by rawJSON. Merely adding a rawJSON property does not create the internal brand."
+            }
+          ]
+        },
+        {
+          "id": "m6-check",
+          "type": "quiz",
+          "title": "Skill check: Precision and raw JSON",
+          "skill": "Precision and raw JSON",
+          "questions": [
+            {
+              "id": "m6-q1",
+              "prompt": "Which portable representation protects a 20-digit identifier?",
+              "options": [
+                "A JavaScript Number",
+                "A decimal string",
+                "A rounded numeric literal"
+              ],
+              "answer": 1,
+              "explanation": "String IDs preserve digits without requiring Number precision."
+            },
+            {
+              "id": "m6-q2",
+              "prompt": "Which input is accepted by JSON.rawJSON?",
+              "options": [
+                "\"[1,2]\"",
+                "\"{\"a\":1}\"",
+                "\"123\""
+              ],
+              "answer": 2,
+              "explanation": "Raw JSON accepts valid primitive JSON text, not containers."
+            },
+            {
+              "id": "m6-q3",
+              "prompt": "Does emitting exact digits guarantee ordinary JSON.parse preserves them?",
+              "options": [
+                "No; the receiver can still round",
+                "Yes; raw JSON changes all parsers",
+                "Only for an indented document"
+              ],
+              "answer": 0,
+              "explanation": "Serialization and parsing precision are separate concerns."
+            },
+            {
+              "id": "m6-q4",
+              "prompt": "What can modern reviver context.source provide?",
+              "options": [
+                "The original spelling of a primitive value",
+                "A network authentication token",
+                "The entire source repository"
+              ],
+              "answer": 0,
+              "explanation": "Primitive source access supports deliberate exact-value recovery."
+            },
+            {
+              "id": "m6-q5",
+              "prompt": "Does {rawJSON:\"1\"} pass JSON.isRawJSON?",
+              "options": [
+                "Yes, because the property exists",
+                "No, because it lacks the internal raw JSON brand",
+                "Only after Object.freeze"
+              ],
+              "answer": 1,
+              "explanation": "Structural resemblance does not create a genuine raw wrapper."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m7",
+      "type": "section",
+      "title": "07 JSON at application boundaries",
+      "children": [
+        {
+          "id": "mdn-response-json",
+          "type": "slides",
+          "title": "Response: json() method",
+          "slides": [
+            {
+              "id": "mdn-response-json-s1",
+              "title": "Learning objective",
+              "body": "Read a response body once and distinguish body parsing errors from other failures.\n\nSource: [Response: json() method](https://developer.mozilla.org/en-US/docs/Web/API/Response/json). Adapted from MDN contributors under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Sections and code examples are retained; navigation widgets are removed. Run code examples in a browser console or local project, not inside this slide reader."
+            },
+            {
+              "id": "mdn-response-json-s2",
+              "title": "Response: json() method",
+              "body": "The **`json()`** method of the [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) interface takes\na [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) stream and reads it to completion. It returns a promise which\nresolves with the result of parsing the body text as [`JSON`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON).\n\nNote that despite the method being named `json()`, the result is not JSON but is instead the result of taking JSON as input and parsing it to produce a JavaScript object."
+            },
+            {
+              "id": "mdn-response-json-s3",
+              "title": "Syntax",
+              "body": "```js\njson()\n```"
+            },
+            {
+              "id": "mdn-response-json-s4",
+              "title": "Parameters",
+              "body": "None."
+            },
+            {
+              "id": "mdn-response-json-s5",
+              "title": "Return value",
+              "body": "A [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves to a JavaScript object. This object could be\nanything that can be represented by JSON — an object, an array, a string, a number…"
+            },
+            {
+              "id": "mdn-response-json-s6",
+              "title": "Exceptions",
+              "body": "- `AbortError` [`DOMException`](https://developer.mozilla.org/en-US/docs/Web/API/DOMException)\n  - : The request was [aborted](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#canceling_a_request).\n- [`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError)\n  - : Thrown for one of the following reasons:\n    - The response body is [disturbed or locked](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#locked_and_disturbed_streams).\n    - There was an error decoding the body content (for example, because the [`Content-Encoding`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Encoding) header is incorrect).\n- [`SyntaxError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError)\n  - : The response body cannot be parsed as JSON."
+            },
+            {
+              "id": "mdn-response-json-s7",
+              "title": "Examples",
+              "body": "In our [fetch JSON example](https://github.com/mdn/dom-examples/tree/main/fetch/fetch-json) (run [fetch JSON live](https://mdn.github.io/dom-examples/fetch/fetch-json/)),\nwe create a new request using the [`Request()`](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request) constructor, then use it to fetch a `.json` file.\nWhen the fetch is successful, we read and parse the data using `json()`, then read\nvalues out of the resulting objects as you'd expect and insert them into list items to\ndisplay our product data.\n\n```js\nconst myList = document.querySelector(\"ul\");\nconst myRequest = new Request(\"products.json\");\n\nfetch(myRequest)\n  .then((response) => response.json())\n  .then((data) => {\n    for (const product of data.products) {\n      const listItem = document.createElement(\"li\");\n      listItem.appendChild(document.createElement(\"strong\")).textContent =\n        product.Name;\n      listItem.append(` can be found in ${product.Location}. Cost: `);\n      listItem.appendChild(document.createElement(\"strong\")).textContent =\n        `£${product.Price}`;\n      myList.appendChild(listItem);\n    }\n  })\n  .catch(console.error);\n```"
+            },
+            {
+              "id": "mdn-response-json-s8",
+              "title": "Specifications",
+              "body": "Check the live [MDN specifications section](https://developer.mozilla.org/en-US/docs/Web/API/Response/json#specifications) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-response-json-s9",
+              "title": "Browser compatibility",
+              "body": "Check the live [MDN browser compatibility section](https://developer.mozilla.org/en-US/docs/Web/API/Response/json#browser_compatibility) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-response-json-s10",
+              "title": "See also",
+              "body": "- [ServiceWorker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)\n- [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)\n- [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)"
+            },
+            {
+              "id": "mdn-response-json-s11",
+              "title": "Practice — try before continuing",
+              "body": "Explain why JSON.parse(await response.json()) is usually incorrect, then predict what a second read of the same body does."
+            },
+            {
+              "id": "mdn-response-json-s12",
+              "title": "Worked self-check",
+              "body": "response.json() already returns parsed data. The same body cannot normally be consumed twice; clone before consuming if a second reader is required. Invalid JSON rejects with SyntaxError."
+            }
+          ]
+        },
+        {
+          "id": "mdn-request-json",
+          "type": "slides",
+          "title": "Request: json() method",
+          "slides": [
+            {
+              "id": "mdn-request-json-s1",
+              "title": "Learning objective",
+              "body": "Parse incoming request body data and validate it separately.\n\nSource: [Request: json() method](https://developer.mozilla.org/en-US/docs/Web/API/Request/json). Adapted from MDN contributors under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Sections and code examples are retained; navigation widgets are removed. Run code examples in a browser console or local project, not inside this slide reader."
+            },
+            {
+              "id": "mdn-request-json-s2",
+              "title": "Request: json() method",
+              "body": "The **`json()`** method of the [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) interface\nreads the request body and returns it as a promise that resolves with the result of parsing the body text as [`JSON`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON).\n\nNote that despite the method being named `json()`, the result is not JSON but is instead the result of taking JSON as input and parsing it to produce a JavaScript object."
+            },
+            {
+              "id": "mdn-request-json-s3",
+              "title": "Syntax",
+              "body": "```js\njson()\n```"
+            },
+            {
+              "id": "mdn-request-json-s4",
+              "title": "Parameters",
+              "body": "None."
+            },
+            {
+              "id": "mdn-request-json-s5",
+              "title": "Return value",
+              "body": "A [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves to a JavaScript object. This object could be\nanything that can be represented by JSON — an object, an array, a string, a number…"
+            },
+            {
+              "id": "mdn-request-json-s6",
+              "title": "Exceptions",
+              "body": "- [`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError)\n  - : Thrown for one of the following reasons:\n    - The request body is [disturbed or locked](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#locked_and_disturbed_streams).\n    - There was an error decoding the body content (for example, because the [`Content-Encoding`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Encoding) header is incorrect).\n- [`SyntaxError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError)\n  - : The request body cannot be parsed as JSON."
+            },
+            {
+              "id": "mdn-request-json-s7",
+              "title": "Examples",
+              "body": "```js\nconst obj = { hello: \"world\" };\n\nconst request = new Request(\"/myEndpoint\", {\n  method: \"POST\",\n  body: JSON.stringify(obj),\n});\n\nrequest.json().then((data) => {\n  // do something with the data sent in the request\n});\n```"
+            },
+            {
+              "id": "mdn-request-json-s8",
+              "title": "Specifications",
+              "body": "Check the live [MDN specifications section](https://developer.mozilla.org/en-US/docs/Web/API/Request/json#specifications) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-request-json-s9",
+              "title": "Browser compatibility",
+              "body": "Check the live [MDN browser compatibility section](https://developer.mozilla.org/en-US/docs/Web/API/Request/json#browser_compatibility) for specification links and current engine support. Compatibility tables are generated upstream and are not frozen into this text snapshot."
+            },
+            {
+              "id": "mdn-request-json-s10",
+              "title": "See also",
+              "body": "- [`Response.json()`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json())"
+            },
+            {
+              "id": "mdn-request-json-s11",
+              "title": "Practice — try before continuing",
+              "body": "Build a Request with method POST and body JSON.stringify({title:\"Syntax\"}). Read it with await request.json()."
+            },
+            {
+              "id": "mdn-request-json-s12",
+              "title": "Worked self-check",
+              "body": "The promise resolves to {title:\"Syntax\"}; it is a parsed JavaScript value. Syntax success does not ensure the expected data shape or authorize the operation."
+            }
+          ]
+        },
+        {
+          "id": "mdn-skills",
+          "type": "slides",
+          "title": "MDN practice tasks",
+          "slides": [
+            {
+              "id": "mdn-skills-s1",
+              "title": "Learning objective",
+              "body": "Practice nested reads and rendering rather than memorizing syntax.\n\nSource: [MDN practice tasks](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Test_your_skills/JSON). Adapted from MDN contributors under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Sections and code examples are retained; navigation widgets are removed. Run code examples in a browser console or local project, not inside this slide reader."
+            },
+            {
+              "id": "mdn-skills-s2",
+              "title": "MDN practice tasks",
+              "body": "The aim of this skill test is to help you assess whether you've understood our [Working with JSON](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON) article.\n\n> **Note:**\n> To get help, read our [Test your skills](https://developer.mozilla.org/en-US/docs/Learn_web_development#test_your_skills) usage guide. You can also reach out to us using one of our [communication channels](https://developer.mozilla.org/en-US/docs/MDN/Community/Communication_channels)."
+            },
+            {
+              "id": "mdn-skills-s3",
+              "title": "JSON 1",
+              "body": "The one and only task in this article concerns accessing JSON data and using it in your page. JSON data about some mother cats and their kittens is available in [sample.json](https://github.com/mdn/learning-area/blob/main/javascript/oojs/tasks/json/sample.json). The JSON is loaded into the page as a text string and made available in the `catString` parameter of the `displayCatInfo()` function.\n\nTo complete the task, fill in the missing parts of the `displayCatInfo()` function to store:\n\n- The names of the three mother cats, separated by commas, in the `motherInfo` variable.\n- The total number of kittens, and how many are male and female, in the `kittenInfo` variable.\n\nThe values of these variables are then printed to the screen inside paragraphs.\n\nSome hints/questions:\n\n- The JSON data is provided as text inside the `displayCatInfo()` function. You'll need to parse it into JSON before you can get any data out of it.\n- You'll probably want to use an outer loop to loop through the cats and add their names to the `motherInfo` variable string, and an inner loop to loop through all the kittens, add up the total of all/male/female kittens, and add those details to the `kittenInfo` variable string.\n- The last mother cat name should have an \"and\" before it, and a full stop after it. How do you make sure this can work, no matter how many cats are in the JSON?\n- Why are the `para1.textContent = motherInfo;` and `para2.textContent = kittenInfo;` lines inside the `displayCatInfo()` function, and not at the end of the script? This has something to do with async code.\n\nThe starting point of the task looks like this:\n\n\n\nHere's the underlying code for this starting point:\n\n```html\n<p class=\"one\"></p>\n<p class=\"two\"></p>\n```\n\n```css hidden live-sample___json-1 live-sample___json-1-finish\np {\n  color: purple;\n  margin: 0.5em 0;\n}\n\n* {\n  box-sizing: border-box;\n}\n```\n\n```js\nconst para1 = document.querySelector(\".one\");\nconst para2 = document.querySelector(\".two\");\nlet motherInfo = \"The mother cats are called \";\nlet kittenInfo;\nconst requestURL =\n  \"https://mdn.github.io/learning-area/javascript/oojs/tasks/json/sample.json\";\n\nfetch(requestURL)\n  .then((response) => response.text())\n  .then((text) => displayCatInfo(text));\n\n// Don't edit the code above here!\n\nfunction displayCatInfo(catString) {\n  let total = 0;\n  let male = 0;\n\n  // Add your code here\n\n  // Don't edit the code below here!\n\n  para1.textContent = motherInfo;\n  para2.textContent = kittenInfo;\n}\n```\n\nThe updated output should look like this:\n\n\n\n\n**Click here to show the solution**\n\nYour finished JavaScript should look something like this:\n\n```js\n// ...\n// Don't edit the code above here!\n\nfunction displayCatInfo(catString) {\n  let total = 0;\n  let male = 0;\n\n  const cats = JSON.parse(catString);\n\n  for (let i = 0; i < cats.length; i++) {\n    for (const kitten of cats[i].kittens) {\n      total++;\n      if (kitten.gender === \"m\") {\n        male++;\n      }\n    }\n\n    if (i < cats.length - 1) {\n      motherInfo += `${cats[i].name}, `;\n    } else {\n      motherInfo += `and ${cats[i].name}.`;\n    }\n  }\n\n  kittenInfo = `There are ${total} kittens in total, ${male} males and ${\n    total - male\n  } females.`;\n\n  // Don't edit the code below here!\n\n  para1.textContent = motherInfo;\n  para2.textContent = kittenInfo;\n}\n```\n\n```js\nconst para1 = document.querySelector(\".one\");\nconst para2 = document.querySelector(\".two\");\nlet motherInfo = \"The mother cats are called \";\nlet kittenInfo;\nconst requestURL =\n  \"https://mdn.github.io/learning-area/javascript/oojs/tasks/json/sample.json\";\n\nfetch(requestURL)\n  .then((response) => response.text())\n  .then((text) => displayCatInfo(text));\n\nfunction displayCatInfo(catString) {\n  let total = 0;\n  let male = 0;\n\n  const cats = JSON.parse(catString);\n\n  for (let i = 0; i < cats.length; i++) {\n    for (const kitten of cats[i].kittens) {\n      total++;\n      if (kitten.gender === \"m\") {\n        male++;\n      }\n    }\n\n    if (i < cats.length - 1) {\n      motherInfo += `${cats[i].name}, `;\n    } else {\n      motherInfo += `and ${cats[i].name}.`;\n    }\n  }\n\n  kittenInfo = `There are ${total} kittens in total, ${male} males and ${\n    total - male\n  } females.`;\n\n  para1.textContent = motherInfo;\n  para2.textContent = kittenInfo;\n}\n```"
+            },
+            {
+              "id": "mdn-skills-s4",
+              "title": "Practice — try before continuing",
+              "body": "Complete the MDN cat-and-kitten task locally. Keep the data input separate from the code that displays it. Use the linked starter and solution resources for self-review."
+            },
+            {
+              "id": "mdn-skills-s5",
+              "title": "Worked self-check",
+              "body": "Use nested array iteration and dot/bracket access for the dataset. A JSON text input must be parsed first; a provided JavaScript object must not be parsed again. These tasks are self-assessed."
+            }
+          ]
+        },
+        {
+          "id": "m7-check",
+          "type": "quiz",
+          "title": "Skill check: JSON integration",
+          "skill": "JSON integration",
+          "questions": [
+            {
+              "id": "m7-q1",
+              "prompt": "What does Request.json() return?",
+              "options": [
+                "A Promise resolving to parsed data",
+                "A synchronous JSON text string",
+                "An authenticated user automatically"
+              ],
+              "answer": 0,
+              "explanation": "The body read and parse are asynchronous."
+            },
+            {
+              "id": "m7-q2",
+              "prompt": "What is a sensible storage round trip for JSON-compatible data?",
+              "options": [
+                "Store the object directly as arbitrary localStorage bytes",
+                "stringify on write, parse on read",
+                "parse on write, stringify on read"
+              ],
+              "answer": 1,
+              "explanation": "localStorage stores strings. Handle missing and malformed stored data."
+            },
+            {
+              "id": "m7-q3",
+              "prompt": "Which approach displays an untrusted title as plain text?",
+              "options": [
+                "innerHTML = title",
+                "eval(title)",
+                "textContent = title"
+              ],
+              "answer": 2,
+              "explanation": "HTML-looking data should remain text when that is the intended display."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m8",
+      "type": "section",
+      "title": "08 Capstone and final review",
+      "children": [
+        {
+          "id": "capstone",
+          "type": "slides",
+          "title": "Project: a JSON lesson catalog",
+          "slides": [
+            {
+              "id": "capstone-s1",
+              "title": "Deliverables",
+              "body": "Create catalog.json, catalog.js and a short README. Use a browser console or a local Node environment. Build a two-course catalog with ordered lessons, published flags, nullable descriptions and long string IDs. This LMS does not execute or grade the project."
+            },
+            {
+              "id": "capstone-s2",
+              "title": "Acceptance checks",
+              "body": "Parse the catalog and validate its shape. Extract the second lesson title. Produce a pretty-printed export with only approved fields. Persist and reload a copy. Include one invalid-syntax fixture and one valid-JSON wrong-shape fixture. Ensure an HTML-looking title stays plain text if displayed."
+            },
+            {
+              "id": "capstone-s3",
+              "title": "Serialization decisions",
+              "body": "Document how dates, omitted fields and null are represented. Demonstrate that a BigInt fails without an explicit conversion. Choose either a string-ID contract or a feature-detected exact-number approach. Explain why JSON.parse(JSON.stringify(value)) is not your general cloning tool."
+            },
+            {
+              "id": "capstone-s4",
+              "title": "Worked reference shape",
+              "body": "```json\n{\"courses\":[{\"id\":\"9007199254740993\",\"title\":\"JSON\",\"published\":true,\"description\":null,\"lessons\":[{\"title\":\"Syntax\",\"minutes\":10},{\"title\":\"Parsing\",\"minutes\":15}]},{\"id\":\"9007199254740995\",\"title\":\"Data formats\",\"published\":false,\"description\":\"Practice\",\"lessons\":[]}]}\n```\n\nAfter parsing, `catalog.courses[0].lessons[1].title` is `Parsing`. Store IDs as strings end to end."
+            },
+            {
+              "id": "capstone-s5",
+              "title": "Self-review rubric",
+              "body": "Score 0–2 for each: valid syntax; nested reads; shape checks; parse-error handling; deliberate stringify behavior; lossless IDs; storage round trip; clear documentation. Aim for 13/16. Explain one tradeoff aloud. This manual rubric is separate from the final quiz."
             }
           ]
         }
       ]
     }
   ],
-  "finalQuiz": {
-    "id": "item-34be63d3-de13-4b56-9f83-70ffef8ba94e",
-    "type": "quiz",
-    "title": "Final quiz",
-    "questions": [
-      {
-        "id": "item-2250b77e-ee94-4362-bac9-4d97b9cabc89",
-        "prompt": "What should a successful save show?",
-        "options": [
-          "No change",
-          "A clear confirmation",
-          "A new color only"
-        ],
-        "answer": 1,
-        "explanation": "Visible status tells the learner that their action succeeded."
-      },
-      {
-        "id": "item-1c6854cd-9847-4238-a594-d76f4ac21f91",
-        "prompt": "What helps people learn from video without hearing its audio?",
-        "options": [
-          "Autoplay",
-          "Captions and a transcript",
-          "A smaller video"
-        ],
-        "answer": 1,
-        "explanation": "Provide captions for synchronized audio and a transcript as a text alternative."
-      }
-    ]
-  },
   "settings": {
     "passScore": 80,
     "allowRetakes": true,
-    "showLessonDetails": true,
+    "showLessonDetails": false,
     "unlockAll": true,
     "sequential": false,
     "requireLessons": true,
-    "brand": "#000000",
-    "background": "#ffd1a3",
-    "surface": "#faf0e6",
-    "text": "#000000",
-    "muted": "#000080",
-    "border": "#000000",
+    "brand": "#69d9b2",
+    "background": "#0c0e12",
+    "surface": "#14171d",
+    "text": "#edf0f7",
+    "muted": "#b4bac9",
+    "border": "#343b49",
     "fontScale": 1,
-    "spacing": 16,
-    "contentWidth": 840,
-    "radius": 28,
+    "spacing": 24,
+    "contentWidth": 1000,
+    "radius": 8,
     "font": "system",
-    "headingFont": "humanist",
-    "lineHeight": 1.4
+    "headingFont": "system",
+    "lineHeight": 1.65
+  },
+  "finalQuiz": {
+    "id": "json-final",
+    "type": "quiz",
+    "title": "Final assessment — JSON skills",
+    "skill": "JSON integration",
+    "questions": [
+      {
+        "id": "final-q1",
+        "prompt": "A configuration contains comments and a trailing comma. What is the first issue?",
+        "options": [
+          "It is not strict JSON",
+          "It must use GET",
+          "It needs an account"
+        ],
+        "answer": 0,
+        "explanation": "Strict JSON excludes comments and trailing commas."
+      },
+      {
+        "id": "final-q2",
+        "prompt": "A learner ID is \"0012\". Which representation preserves that spelling?",
+        "options": [
+          "Number 12",
+          "String \"0012\"",
+          "Numeric literal 0012"
+        ],
+        "answer": 1,
+        "explanation": "The leading zeros are part of the identifier, not a number."
+      },
+      {
+        "id": "final-q3",
+        "prompt": "A parsed catalog has lessons:[{title:\"A\"},{title:\"B\"}]. Which yields B?",
+        "options": [
+          "catalog.lessons.title",
+          "catalog.lessons[2].title",
+          "catalog.lessons[1].title"
+        ],
+        "answer": 2,
+        "explanation": "Nested reads use the zero-based array index and member name."
+      },
+      {
+        "id": "final-q4",
+        "prompt": "A reviver only returns a value for key minutes. Why did other members vanish?",
+        "options": [
+          "Missing returns produce undefined and delete members",
+          "The JSON parser sorts them away",
+          "Revivers cannot preserve strings"
+        ],
+        "answer": 0,
+        "explanation": "Return all untransformed values explicitly."
+      },
+      {
+        "id": "final-q5",
+        "prompt": "An API supplies \"minutes\":\"12\". Parsing succeeds. What is next?",
+        "options": [
+          "Assume the field is numeric",
+          "Validate against the expected field type",
+          "Run eval to recover the original type"
+        ],
+        "answer": 1,
+        "explanation": "Parsing does not enforce application types or rules."
+      },
+      {
+        "id": "final-q6",
+        "prompt": "An export is JSON.stringify({ready:false,missing:undefined}). Which output is expected?",
+        "options": [
+          "{\"ready\":false,\"missing\":null}",
+          "{}",
+          "{\"ready\":false}"
+        ],
+        "answer": 2,
+        "explanation": "False is preserved; undefined object members are omitted."
+      },
+      {
+        "id": "final-q7",
+        "prompt": "An array export contains an undefined item. What appears at that position?",
+        "options": [
+          "null",
+          "The position is removed",
+          "undefined as JSON text"
+        ],
+        "answer": 0,
+        "explanation": "Array positions are retained using null for unsupported values."
+      },
+      {
+        "id": "final-q8",
+        "prompt": "A replacer returns undefined for the root. What can stringify return?",
+        "options": [
+          "{}",
+          "undefined rather than JSON text",
+          "null in every case"
+        ],
+        "answer": 1,
+        "explanation": "Root filtering can prevent a JSON document from being produced."
+      },
+      {
+        "id": "final-q9",
+        "prompt": "A pretty-print space argument is 20. What indentation does stringify use?",
+        "options": [
+          "20 spaces",
+          "No indentation",
+          "At most 10 spaces per level"
+        ],
+        "answer": 2,
+        "explanation": "Numeric indentation is clamped to ten."
+      },
+      {
+        "id": "final-q10",
+        "prompt": "A class instance is serialized and parsed. What should you expect?",
+        "options": [
+          "Its encoded data, without automatically restoring its prototype",
+          "An identical instance with every method",
+          "Its constructor to run automatically"
+        ],
+        "answer": 0,
+        "explanation": "JSON does not encode arbitrary runtime behavior or prototype identity."
+      },
+      {
+        "id": "final-q11",
+        "prompt": "A diagnostic export has the same child object in two separate branches but no cycle. What happens?",
+        "options": [
+          "It must throw",
+          "It serializes repeated data",
+          "It writes a reference pointer automatically"
+        ],
+        "answer": 1,
+        "explanation": "Repeated references are distinct from ancestor cycles; JSON does not preserve identity."
+      },
+      {
+        "id": "final-q12",
+        "prompt": "A serializer encounters 9007199254740993n. What is the deliberate portable fix?",
+        "options": [
+          "Cast to Number blindly",
+          "Append n inside JSON text",
+          "Encode a decimal string with an agreed decoding contract"
+        ],
+        "answer": 2,
+        "explanation": "Ordinary BigInt serialization throws; Number conversion can lose precision."
+      },
+      {
+        "id": "final-q13",
+        "prompt": "A long JSON number has already been converted to a rounded Number. Which modern feature can recover the original digits?",
+        "options": [
+          "Primitive reviver context.source",
+          "The Number toString method",
+          "Increasing pretty-print indentation"
+        ],
+        "answer": 0,
+        "explanation": "Source text access avoids relying on an already-rounded Number."
+      },
+      {
+        "id": "final-q14",
+        "prompt": "A client lacks JSON.rawJSON. What should an exact-ID application do?",
+        "options": [
+          "Call it anyway",
+          "Use a compatible agreed string representation",
+          "Round every ID to the nearest safe integer"
+        ],
+        "answer": 1,
+        "explanation": "Feature detection and compatible contracts prevent broken or lossy exports."
+      },
+      {
+        "id": "final-q15",
+        "prompt": "JSON.isRawJSON(Object.freeze({rawJSON:\"123\"})) produces what?",
+        "options": [
+          "true",
+          "A parsed number",
+          "false"
+        ],
+        "answer": 2,
+        "explanation": "Freezing an ordinary object does not add the internal raw JSON brand."
+      },
+      {
+        "id": "final-q16",
+        "prompt": "A response body was already consumed by response.text(). What helps before a second consumer reads it?",
+        "options": [
+          "Clone the response before the first consumption",
+          "Change the JSON indentation",
+          "Parse the Response object directly"
+        ],
+        "answer": 0,
+        "explanation": "A clone must be made before the body is consumed; repeated reads fail."
+      },
+      {
+        "id": "final-q17",
+        "prompt": "A title contains HTML markup but should display literally. What should rendering use?",
+        "options": [
+          "innerHTML",
+          "textContent",
+          "new Function"
+        ],
+        "answer": 1,
+        "explanation": "Parsing JSON is not HTML sanitization. textContent preserves literal text."
+      },
+      {
+        "id": "final-q18",
+        "prompt": "Which statement best separates the courses?",
+        "options": [
+          "JSON defines API permissions",
+          "JSON replaces HTTP methods",
+          "JSON is the data format; HTTP transports messages; an API defines interaction"
+        ],
+        "answer": 2,
+        "explanation": "The concepts work together but have distinct responsibilities."
+      }
+    ]
   }
 }

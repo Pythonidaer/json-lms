@@ -1,0 +1,290 @@
+{
+  "retrievedAt": "2026-10-07",
+  "mdnCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+  "scope": "JSON.org format/grammar; MDN glossary, learner guide and skills tasks, JSON namespace and all static methods, JSON-related errors, Request/Response body JSON. Linked external libraries and unrelated HTTP/API docs are not reproduced.",
+  "sources": [
+    {
+      "id": "jsonorg",
+      "title": "Introducing JSON",
+      "url": "https://www.json.org/json-en.html",
+      "lessonIds": [
+        "jsonorg-format",
+        "jsonorg-tokens"
+      ],
+      "adaptation": "Original concise summary of format and grammar; original practice examples. Library directory and historical articles linked, not reproduced."
+    },
+    {
+      "id": "glossary",
+      "title": "JSON",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/JSON",
+      "lessonId": "mdn-glossary",
+      "upstreamCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+      "sourcePath": "docs/mdn/glossary.md",
+      "sha256": "51390f88014850063dc575c91e90e93f3e903ed9a5f97b59445ede80f9203f8e",
+      "upstreamHeadings": [
+        "See also"
+      ],
+      "adaptation": "Preserve source sections/examples; resolve MDN macros and links; replace generated compatibility/specification widgets with live references; append original objective/practice."
+    },
+    {
+      "id": "guide",
+      "title": "Working with JSON: a browser example",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON",
+      "lessonId": "mdn-guide",
+      "upstreamCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+      "sourcePath": "docs/mdn/guide.md",
+      "sha256": "fe1826493298a42679de034341b366301506b62a4656e90b401ca6040d1c9ace",
+      "upstreamHeadings": [
+        "No, really, what is JSON?",
+        "JSON structure",
+        "Arrays as JSON",
+        "JSON syntax restrictions",
+        "Working through a JSON example",
+        "Getting started",
+        "Top-level function",
+        "Populating the header",
+        "Creating the hero information cards",
+        "Calling the top-level function",
+        "Converting between objects and text",
+        "Summary",
+        "See also"
+      ],
+      "adaptation": "Preserve source sections/examples; resolve MDN macros and links; replace generated compatibility/specification widgets with live references; append original objective/practice."
+    },
+    {
+      "id": "json",
+      "title": "The JSON namespace and complete grammar",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+      "lessonId": "mdn-json",
+      "upstreamCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+      "sourcePath": "docs/mdn/json.md",
+      "sha256": "656f93c9ef257a8ab7c8d3cbf7235194d1d54f77efb3f38d24400088964c997d",
+      "upstreamHeadings": [
+        "Description",
+        "JavaScript and JSON differences",
+        "Full JSON grammar",
+        "Static properties",
+        "Static methods",
+        "Examples",
+        "Example JSON",
+        "Lossless number serialization",
+        "Using JSON strings",
+        "Using JSON numbers",
+        "Specifications",
+        "Browser compatibility",
+        "See also"
+      ],
+      "adaptation": "Preserve source sections/examples; resolve MDN macros and links; replace generated compatibility/specification widgets with live references; append original objective/practice."
+    },
+    {
+      "id": "parse",
+      "title": "JSON.parse()",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse",
+      "lessonId": "mdn-parse",
+      "upstreamCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+      "sourcePath": "docs/mdn/parse.md",
+      "sha256": "0d8cacd5f0510407a3eb097f9cc34e8b81d7fbe31b3b1f8246e743a8a601fe79",
+      "upstreamHeadings": [
+        "Syntax",
+        "Parameters",
+        "Return value",
+        "Exceptions",
+        "Description",
+        "The reviver parameter",
+        "Examples",
+        "Using JSON.parse()",
+        "Using the reviver parameter",
+        "Using reviver when paired with the replacer of JSON.stringify()",
+        "Illegal JSON",
+        "Specifications",
+        "Browser compatibility",
+        "See also"
+      ],
+      "adaptation": "Preserve source sections/examples; resolve MDN macros and links; replace generated compatibility/specification widgets with live references; append original objective/practice."
+    },
+    {
+      "id": "bad-parse",
+      "title": "SyntaxError: JSON.parse: bad parsing",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/JSON_bad_parse",
+      "lessonId": "mdn-bad-parse",
+      "upstreamCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+      "sourcePath": "docs/mdn/bad-parse.md",
+      "sha256": "e572a5e7445bbf0c60b1385adfef53989744a0247487ba45e293c10694db40dc",
+      "upstreamHeadings": [
+        "Message",
+        "Error type",
+        "What went wrong?",
+        "Examples",
+        "JSON.parse() does not allow trailing commas",
+        "Property names must be double-quoted strings",
+        "Leading zeros and decimal points",
+        "See also"
+      ],
+      "adaptation": "Preserve source sections/examples; resolve MDN macros and links; replace generated compatibility/specification widgets with live references; append original objective/practice."
+    },
+    {
+      "id": "stringify",
+      "title": "JSON.stringify()",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
+      "lessonId": "mdn-stringify",
+      "upstreamCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+      "sourcePath": "docs/mdn/stringify.md",
+      "sha256": "58b00d28b8aaa135501c853d696e20360c59bd5e31a5d1883ab2a0c08113d9ef",
+      "upstreamHeadings": [
+        "Syntax",
+        "Parameters",
+        "Return value",
+        "Exceptions",
+        "Description",
+        "The replacer parameter",
+        "The space parameter",
+        "Examples",
+        "Using JSON.stringify",
+        "Using a function as replacer",
+        "Using an array as replacer",
+        "Using the space parameter",
+        "toJSON() behavior",
+        "Issue with serializing circular references",
+        "Using JSON.stringify() with localStorage",
+        "Well-formed JSON.stringify()",
+        "Specifications",
+        "Browser compatibility",
+        "See also"
+      ],
+      "adaptation": "Preserve source sections/examples; resolve MDN macros and links; replace generated compatibility/specification widgets with live references; append original objective/practice."
+    },
+    {
+      "id": "cyclic",
+      "title": "TypeError: cyclic object value",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cyclic_object_value",
+      "lessonId": "mdn-cyclic",
+      "upstreamCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+      "sourcePath": "docs/mdn/cyclic.md",
+      "sha256": "2673c2e555184134ddc9766482bcfbff64a425e57c3262de8a45092684d29183",
+      "upstreamHeadings": [
+        "Message",
+        "Error type",
+        "What went wrong?",
+        "Examples",
+        "Circular references",
+        "See also"
+      ],
+      "adaptation": "Preserve source sections/examples; resolve MDN macros and links; replace generated compatibility/specification widgets with live references; append original objective/practice."
+    },
+    {
+      "id": "bigint",
+      "title": "TypeError: BigInt value can't be serialized in JSON",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/BigInt_not_serializable",
+      "lessonId": "mdn-bigint",
+      "upstreamCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+      "sourcePath": "docs/mdn/bigint.md",
+      "sha256": "9ea34ae137fb80e88a2be2cf6c6fb2c964af96b975591a55e71d4d78b1ee0af2",
+      "upstreamHeadings": [
+        "Message",
+        "Error type",
+        "What went wrong?",
+        "Examples",
+        "Providing a custom serialization method",
+        "See also"
+      ],
+      "adaptation": "Preserve source sections/examples; resolve MDN macros and links; replace generated compatibility/specification widgets with live references; append original objective/practice."
+    },
+    {
+      "id": "rawjson",
+      "title": "JSON.rawJSON()",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/rawJSON",
+      "lessonId": "mdn-rawjson",
+      "upstreamCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+      "sourcePath": "docs/mdn/rawjson.md",
+      "sha256": "ec5e82c1ad8e78c3f5e10a1583dd52cdf62485b41c490d8f515b251a9a575a99",
+      "upstreamHeadings": [
+        "Syntax",
+        "Parameters",
+        "Return value",
+        "Exceptions",
+        "Description",
+        "Examples",
+        "Using JSON.rawJSON() to create JSON expressions of different types",
+        "Using JSON.rawJSON() to create escaped string literals",
+        "Specifications",
+        "Browser compatibility",
+        "See also"
+      ],
+      "adaptation": "Preserve source sections/examples; resolve MDN macros and links; replace generated compatibility/specification widgets with live references; append original objective/practice."
+    },
+    {
+      "id": "israwjson",
+      "title": "JSON.isRawJSON()",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/isRawJSON",
+      "lessonId": "mdn-israwjson",
+      "upstreamCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+      "sourcePath": "docs/mdn/israwjson.md",
+      "sha256": "09e9be282dfed40999a8d55ed90d812abe5dc52457433d02e550f5b8f7c6838e",
+      "upstreamHeadings": [
+        "Syntax",
+        "Parameters",
+        "Return value",
+        "Description",
+        "Examples",
+        "Using JSON.isRawJSON()",
+        "Specifications",
+        "Browser compatibility",
+        "See also"
+      ],
+      "adaptation": "Preserve source sections/examples; resolve MDN macros and links; replace generated compatibility/specification widgets with live references; append original objective/practice."
+    },
+    {
+      "id": "response-json",
+      "title": "Response: json() method",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Response/json",
+      "lessonId": "mdn-response-json",
+      "upstreamCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+      "sourcePath": "docs/mdn/response-json.md",
+      "sha256": "a3ca2752c288c0172daf37ffc6224e7a6d3086a971e475f1841aca8877eabe4a",
+      "upstreamHeadings": [
+        "Syntax",
+        "Parameters",
+        "Return value",
+        "Exceptions",
+        "Examples",
+        "Specifications",
+        "Browser compatibility",
+        "See also"
+      ],
+      "adaptation": "Preserve source sections/examples; resolve MDN macros and links; replace generated compatibility/specification widgets with live references; append original objective/practice."
+    },
+    {
+      "id": "request-json",
+      "title": "Request: json() method",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Request/json",
+      "lessonId": "mdn-request-json",
+      "upstreamCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+      "sourcePath": "docs/mdn/request-json.md",
+      "sha256": "de5e1978877e8611a90de85320e90f1ca5f1ecddf33b2df3782f0753ac90e08c",
+      "upstreamHeadings": [
+        "Syntax",
+        "Parameters",
+        "Return value",
+        "Exceptions",
+        "Examples",
+        "Specifications",
+        "Browser compatibility",
+        "See also"
+      ],
+      "adaptation": "Preserve source sections/examples; resolve MDN macros and links; replace generated compatibility/specification widgets with live references; append original objective/practice."
+    },
+    {
+      "id": "skills",
+      "title": "MDN practice tasks",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Test_your_skills/JSON",
+      "lessonId": "mdn-skills",
+      "upstreamCommit": "bf7ff749b987d530e9a6c07f23ac66f94d968e57",
+      "sourcePath": "docs/mdn/skills.md",
+      "sha256": "a2b0cf34620dbd0f63b730b0746fb9e1695f139b0dc20b794f6c05fcc7ce297f",
+      "upstreamHeadings": [
+        "JSON 1"
+      ],
+      "adaptation": "Preserve source sections/examples; resolve MDN macros and links; replace generated compatibility/specification widgets with live references; append original objective/practice."
+    }
+  ]
+}
