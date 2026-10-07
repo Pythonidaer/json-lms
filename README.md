@@ -1,5 +1,7 @@
 # JSON LMS
 
+Live course: https://pythonidaer.github.io/json-lms/
+
 A focused, self-paced course from JSON.org and MDN using the GraphQL LMS reference: **8 modules, 20 lesson decks, 195 slides, 6 module quizzes (26 questions), and an independent 18-question final assessment.**
 
 ## Curriculum
